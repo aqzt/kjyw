@@ -15,3 +15,7 @@ find . -name *.log | xargs rm
 find . -name *.rpm | xargs rm
 find /data/file1 -name .svn -print0 | xargs -0 rm -r -f
 find /data/file1 -name .git -print0 | xargs -0 rm -r -f
+
+#删除5天之前的日志
+find /data/nginx/log/ -ctime +5 -exec rm -f {} \;
+find /data/logs -ctime +5 -exec rm -f {} \;

@@ -6,8 +6,7 @@
 ##centos 6和centos 7
 
 OS_CENTOS6(){
-wget
-http://mirrors.aliyun.com/epel/epel-release-latest-6.noarch.rpm
+wget http://mirrors.aliyun.com/epel/epel-release-latest-6.noarch.rpm
 rpm -Uvh epel-release-latest-6.noarch.rpm
 rpm --import /etc/pki/rpm-gpg/RPM-GPG-KEY-EPEL-6
 
