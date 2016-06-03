@@ -120,3 +120,115 @@ $for num in `seq 8 -1 1`;do dd=`date --date="${num} day ago" +%Y%m%d`;echo ${dd}
 $ for d in 201603??;do echo ${d}; cd ${d}; rename -n 's/*.log.gz//' *.log.gz ; cd ..;done
 
 测试完成后，使用rename不加-n为真正执行重命名操作。
+
+
+####################################################
+把两个空格替换成一个空格，然后一直替换
+echo "a b    d" |sed -e 's/  \+/ /g'
+
+如果你闲邮件提醒烦，可以这么干
+
+grep "unset MAILCHECK" /etc/profile
+if [ $? -ne 0 ]; then
+    sed -i "/unset MAILCHECK/d" /etc/profile
+    echo "unset MAILCHECK"  >> /etc/profile
+fi
+
+grep -v "^;" /etc/php/php.ini
+cat /etc/php/php.ini |grep -v "^;"
+egrep -v "^;|^$" /etc/php/php.ini
+
+BM.BM_PAYMENT.AAAfpLACIAAATeGAAK
+BM.BM_PAYMENT.AAAfpLACIAAATeGAAL
+  awk -F . '{print $0$1}' file
+BM.BM_PAYMENT  取这两个  AWK是这样写吗
+
+echo "BM.BM_PAYMENT.AAAfpLACIAAATeGAAK"|awk '{FS=".";OFS=".";print $1,$2}'
+BM.BM_PAYMENT
+echo "BM.BM_PAYMENT.AAAfpLACIAAATeGAAK"|awk -F'.' '{printf("%s.%s\n",$1,$2)}'   
+BM.BM_PAYMENT
+两种方法，随便哪个都行echo "BM.BM_PAYMENT.AAAfpLACIAAATeGAAK"|cut -d '.' -f 1,2                    
+BM.BM_PAYMENT
+
+
+useradd
+#!/bin/bash
+echo "please user"
+read name
+echo "please num"
+read num
+n=1
+for ((n=1;n<$num;n++))
+#while [ $n -le $num ]
+do
+   echo $name$n
+/usr/sbin/useradd $name$n
+echo 123123 | /usr/bin/passwd --stdin $name$n
+#   n=`expr $n + 1`
+done
+
+
+n=$1
+/bin/grep $n /etc/group
+if [ $? -eq 0 ]
+then
+     echo aaa
+else
+   /usr/sbin/groupadd $n
+fi
+
+
+
+group2.txt
+adminuser dbuser updatauser
+dbuser updatauser
+updatauser wheel
+
+
+
+awk '{print $2","}' user.list > group2.txt
+#echo "fenkai:"
+sed -i 's/,/ /g' group2.txt
+groupid=`cat group2.txt`
+for A in $groupid
+do
+#echo $A
+n=$A
+       /bin/grep $n /etc/group
+       if [ $? -eq 0 ]
+       then
+            echo $n exists
+       else
+          /usr/sbin/groupadd $n
+       fi
+
+done
+#awk -F, '{print $2}' group2.txt
+
+
+
+要替代当前目录下所有Makefile中-Werror为‘’
+
+find ./ -type f -name Makefile | xargs perl -pi -e `s|-Werror| |g` 
+
+
+#!/bin/bash
+for AAA in `ls ${DIR}`
+
+do
+  
+sed -i 's/-Werror//g' $AAA
+done
+
+文件夹各自打成一个以文件名的生成一个tar.gz的包
+http://bbs.linuxtone.org/thread-10250-1-1.html
+
+写个for就行了
+for a in 2011*;do
+tar zcvf $a $a.tar.gz
+done
+
+
+ls | awk '{ print "tar zcvf "$0".tgz " $0|"/bin/bash" }' 
+
+
