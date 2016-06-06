@@ -7,6 +7,7 @@
 
 #安装Ansible，安装EPEL第三方yum源
 rpm -Uvh epel-release-6-8.noarch.rpm
+yum install gcc python-devel python-pip -y
 yum install ansible -y
 
 ##添加环境变量以便vi能正常显示中文注释.
