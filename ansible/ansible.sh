@@ -39,8 +39,6 @@ ssh-copy-id -i /root/.ssh/id_rsa.pub root@192.168.142.139
 ansible all -m ping
 ansible webservers -m ping
 
-##重启webservers组所有SSH服务.
-ansible webservers -m service -a "name=sshd state=restarted"
 
 ##command: 执行远程主机SHELL命令:
 ansible webservers -m command -a "free -m"
@@ -88,6 +86,8 @@ ansible all -m cron -a 'name="custom job" minute=*/3 hour=* day=* month=* weekda
 ansible webservers -m service -a "name=crond state=stopped"
 ansible webservers -m service -a "name=crond state=restarted"
 ansible webservers -m service -a "name=crond state=reloaded"
+##重启webservers组所有SSH服务.
+ansible webservers -m service -a "name=sshd state=restarted"
 
 ##user服务模块
 ##远程主机系统用户管理
