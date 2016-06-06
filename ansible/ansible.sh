@@ -34,7 +34,7 @@ vi /etc/ansible/hosts
 ssh-copy-id -i /root/.ssh/id_rsa.pub root@192.168.142.136
 ssh-copy-id -i /root/.ssh/id_rsa.pub root@192.168.142.139
 
-##ansible使用及基本语法ping
+##ansible使用ping模块
 ansible all -m ping
 ansible webservers -m ping
 
@@ -117,11 +117,11 @@ ansible 10.1.1.113 -m synchronize -a 'src=/root/a dest=/tmp/ compress=yes'
 ##将10.1.1.113节点的/tmp/a目录拉取到主控节点的/root目录下
 ansible 10.1.1.113 -m synchronize -a 'mode=pull src=/tmp/a dest=/root/'
 
+##facts侦测模块
+ansible webservers -m setup -a  "filter=ansible_eth[0-2]"
 
-
-
-
-
+##Git模块
+ansible webservers -m git -a "repo=https://xxx.com/tomcat.git dest=/data"
 
 
 
