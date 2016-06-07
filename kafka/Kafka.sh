@@ -93,7 +93,7 @@ bin/kafka-console-producer.sh --broker-list 192.168.142.136:9092  --topic mykafk
 ##在另一个终端，启动Consumer，执行如下命令：
 bin/kafka-console-consumer.sh --zookeeper 192.168.142.136:2181/kafka --topic mykafka --from-beginning
 
-
+#######confluent启动
 cd /opt/confluent-2.0.1/
 bin/schema-registry-start etc/schema-registry/schema-registry.properties  >/dev/null 2>&1 &
 ##停止命令
