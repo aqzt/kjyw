@@ -38,5 +38,5 @@ ldconfig -v
 
 nghttp -nvu http://baidu.com
 h2load https://baidu.com -n 100 -c 10
-
+h2load https://baidu.com -c 1000 -n 1000000 -m1
 

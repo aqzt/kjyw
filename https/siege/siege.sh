@@ -5,10 +5,10 @@
 ##robert yu
 ##centos 6
 
-wget wget http://download.joedog.org/siege/siege-latest.tar.gz
+wget http://download.joedog.org/siege/siege-latest.tar.gz
 tar -xzvf siege-latest.tar.gz
 cd siege-4.0.2
-./configure --prefix=/opt/siege --with-ssl=/root/openssl-1.0.2h
+./configure --prefix=/opt/siege --with-ssl=/home/test/openssl-1.0.2h
 make && make install
 
 #siege -c 20 -r 2 -f url
