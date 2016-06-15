@@ -90,12 +90,20 @@ bin/kafka-topics.sh --create --zookeeper 192.168.142.136:2181/kafka  --replicati
 
 ##列出所有主题
 bin/kafka-topics.sh --list --zookeeper 192.168.142.136:2181/kafka
+bin/kafka-topics.sh --describe --zookeeper 192.168.142.136:2181/kafka --topic mykafka
 
 ##在一个终端，启动Producer，执行如下命令：
 bin/kafka-console-producer.sh --broker-list 192.168.142.136:9092  --topic mykafka
 
 ##在另一个终端，启动Consumer，执行如下命令：
 bin/kafka-console-consumer.sh --zookeeper 192.168.142.136:2181/kafka --topic mykafka --from-beginning
+
+##删除topic
+cd /opt/kafka_2.10-0.9.0.1
+bin/kafka-topics.sh --delete --zookeeper 192.168.142.136:2181/kafka --topic mykafka
+##执行后，该topic会被kafka标记为删除，还需要在zookeeper中手动删除相关的节点：
+[zk: localhost:2181(CONNECTED) 5] rmr /brokers/topics/mykafka
+
 
 #######confluent启动
 cd /opt/confluent-2.0.1/
@@ -107,4 +115,6 @@ cd /opt/confluent-2.0.1/
 bin/kafka-rest-start etc/kafka-rest/kafka-rest.properties  >/dev/null 2>&1 &
 ##停止命令
 ##ps ax | grep -i 'kafka-rest' | grep -v grep | awk '{print $1}' | xargs kill
+
+
 
