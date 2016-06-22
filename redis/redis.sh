@@ -4,6 +4,8 @@
 ##email: ppabc@qq.com
 ##robert yu
 ##centos 6
+##批量部署redis的脚本，输入开始端口和结束端口，自动创建文件夹，
+##准备配置文件模板，批量替换配置文件端口，批量启动和停止redis
 
 Install_C(){
 echo "start num"
