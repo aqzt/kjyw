@@ -9,7 +9,7 @@ kjyw
 
 如果您有好用的脚本，希望一起来分享，可以联系邮件ppabc#qq.com，
 
-关注https://github.com/aqzt
+微信关注https://github.com/aqzt
 
 ![image](https://github.com/aqzt/kjyw/raw/master/images/aqzt.jpg)
 
