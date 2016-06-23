@@ -10,7 +10,7 @@ yum install -y  curl openssh-server openssh-clients postfix cronie git nmap unzi
 
 ##注意修改主机名
 cat >>/etc/hosts<<EOF
-192.168.142.138   master.storm.com
+192.168.142.137   master.storm.com
 EOF
 
 hostname   master.storm.com
@@ -26,8 +26,10 @@ EOF
 cd /opt/
 tar zxvf tomcat.tar
 
+source  /etc/profile
+
 ##编译安装ZMQ：
-wget http://download.zeromq.org/zeromq-3.2.5.tar.gz
+#wget http://download.zeromq.org/zeromq-3.2.5.tar.gz
 tar zxvf  zeromq-3.2.5.tar.gz
 cd zeromq-3.2.5
 ./configure
@@ -62,6 +64,7 @@ EOF
 cd /opt/zk/bin/
 /opt/zk/bin/zkServer.sh start
 
+cd /opt
 tar zxvf apache-storm-0.10.1.tar.gz
 mkdir  -p /data/storm
 
@@ -88,10 +91,12 @@ EOF
 cd /opt/apache-storm-0.10.1
 bin/storm nimbus >/dev/null 2>&1 &
 
+sleep 10
 ##Supervisor: 在Storm各个工作节点上运行
 cd /opt/apache-storm-0.10.1
 bin/storm supervisor >/dev/null 2>&1 &
 
+sleep 10
 ##UI: 在Storm主控节点上运行
 cd /opt/apache-storm-0.10.1
 bin/storm ui >/dev/null 2>&1 &
