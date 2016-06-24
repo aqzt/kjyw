@@ -37,6 +37,10 @@ cat ~/.ssh/id_dsa.pub >> ~/.ssh/authorized_keys
 chmod 600 ~/.ssh/authorized_keys
 
 ##yum -y install openssh-clients
+ssh-copy-id -i /root/.ssh/id_dsa.pub root@192.168.142.136
+ssh-copy-id -i /root/.ssh/id_dsa.pub root@192.168.142.139
+
+#注意文件是id_dsa.pub还是id_rsa.pub，否则会出现ssh-copy-id: ERROR: No identities found
 ssh-copy-id -i /root/.ssh/id_rsa.pub root@192.168.142.136
 ssh-copy-id -i /root/.ssh/id_rsa.pub root@192.168.142.139
 
