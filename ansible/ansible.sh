@@ -7,8 +7,8 @@
 
 #安装Ansible，安装EPEL第三方yum源
 rpm -Uvh epel-release-6-8.noarch.rpm
-yum install -y gcc python-devel python-pip libffi-devel libxml2 openssl openssl-devel python-requests python-setuptools python-tornado python-simplejson
-yum install ansible -y
+yum install -y gcc python-devel python-pip libffi-devel libxml2 openssl openssl-devel python-requests python-setuptools python-tornado python-simplejson PyYAML libyaml python-babel python-crypto python-crypto2.6  python-httplib2 python-jinja2-26       python-keyczar python-markupsafe python-paramiko python-pyasn1 sshpass ansible
+
 
 ##添加环境变量以便vi能正常显示中文注释.
 vi /etc/profile
