@@ -7,7 +7,20 @@
 
 #安装Ansible，安装EPEL第三方yum源
 rpm -Uvh epel-release-6-8.noarch.rpm
-yum install -y gcc python-devel python-pip libffi-devel libxml2 openssl openssl-devel python-requests python-setuptools python-tornado python-simplejson PyYAML libyaml python-babel python-crypto python-crypto2.6  python-httplib2 python-jinja2-26       python-keyczar python-markupsafe python-paramiko python-pyasn1 python-jinja2 sshpass ansible
+yum install -y gcc python-devel python-pip libffi-devel libxml2 openssl openssl-devel python-requests python-setuptools python-tornado python-simplejson PyYAML libyaml python-babel python-crypto python-crypto2.6  python-httplib2 python-jinja2-26 libselinux-python python-keyczar python-markupsafe python-paramiko python-pyasn1 python-jinja2 sshpass ansible
+
+##安装ansible另一方法
+##wget https://pypi.python.org/packages/source/a/ansible/ansible-2.1.0.0.tar.gz
+##wget https://pypi.python.org/packages/source/s/setuptools/setuptools-19.6.2.tar.gz
+##tar zxvf  setuptools-19.6.2.tar.gz
+##cd setuptools-19.6.2
+##python setup.py install
+##cd ..
+##tar zxvf  ansible-2.1.0.0.tar.gz
+##cd ansible-2.1.0.0
+##python setup.py build
+##python setup.py install
+##ansible --version
 
 
 ##添加环境变量以便vi能正常显示中文注释.
@@ -39,6 +52,11 @@ chmod 600 ~/.ssh/authorized_keys
 ##yum -y install openssh-clients
 ssh-copy-id -i /root/.ssh/id_dsa.pub root@192.168.142.136
 ssh-copy-id -i /root/.ssh/id_dsa.pub root@192.168.142.139
+
+#ssh无密码认证 RSA
+ssh-keygen -t rsa
+cat ~/.ssh/id_rsa.pub >> ~/.ssh/authorized_keys
+chmod 600 ~/.ssh/authorized_keys
 
 #注意文件是id_dsa.pub还是id_rsa.pub，否则会出现ssh-copy-id: ERROR: No identities found
 ssh-copy-id -i /root/.ssh/id_rsa.pub root@192.168.142.136
