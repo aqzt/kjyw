@@ -35,6 +35,7 @@ find /temp/ -type f -mtime +3 -print
 
 ##找出并删除 7 天前的文件
 find /temp/ -type f -mtime +7 -print -exec rm -f {} \;
+find /temp/ "ut*.log" -type f -mtime +7 -print -exec rm -f {} \;
 
 ##注：-exec 指出要执行后面的系统命令
 ##rm -f 删除找出的文件
