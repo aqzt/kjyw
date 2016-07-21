@@ -3,13 +3,16 @@
 ## http://www.aqzt.com
 ##email: ppabc@qq.com
 ##robert yu
-##centos 6和centos 7
+##centos 7
 
 # /etc/sysctl.conf
 echo "NETWORKING_IPV6=no">>/etc/sysconfig/network
 
+echo 1 > /proc/sys/net/ipv6/conf/all/disable_ipv6
+echo 1 > /proc/sys/net/ipv6/conf/default/disable_ipv6
+
 # /etc/sysctl.conf
-cat >>/etc/sysctl.conf<<EOF
+cat >/etc/sysctl.conf<<EOF
 net.ipv6.conf.all.disable_ipv6 = 1
 net.ipv6.conf.default.disable_ipv6 = 1
 net.ipv4.tcp_syn_retries = 1
