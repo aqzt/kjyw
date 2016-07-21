@@ -36,9 +36,10 @@ net.netfilter.nf_conntrack_max = 6553500
 net.netfilter.nf_conntrack_tcp_timeout_established = 180
 EOF
 
+sysctl -p
+
 ##SSH
 cat >/etc/ssh/sshd_config<<EOF
-cat /etc/ssh/sshd_config
 Port 22
 AddressFamily inet
 ListenAddress 0.0.0.0
@@ -56,6 +57,8 @@ UseDNS no
 X11Forwarding yes
 Subsystem       sftp    /usr/libexec/openssh/sftp-server
 EOF
+
+service sshd restart
 
 #sed -i 's/IPV6INIT=yes/IPV6INIT=no/g' /etc/sysconfig/network-scripts/ifcfg-eth0
 #sed -i 's/IPV6INIT=yes/IPV6INIT=no/g' /etc/sysconfig/network-scripts/ifcfg-eth1
