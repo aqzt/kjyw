@@ -20,6 +20,8 @@ Host *
 ##SSH配置优化
 cat /etc/ssh/sshd_config
 Port 22
+AddressFamily inet
+ListenAddress 0.0.0.0
 Protocol 2
 SyslogFacility AUTHPRIV
 PermitRootLogin yes
@@ -33,6 +35,11 @@ UsePAM yes
 UseDNS no
 X11Forwarding yes
 Subsystem       sftp    /usr/libexec/openssh/sftp-server
+
+
+##SSH禁止IPv6,只要ipv4
+AddressFamily inet
+ListenAddress 0.0.0.0
 
 ##不建议启用这两个配置，会导致SSH慢
 #GSSAPIAuthentication yes
