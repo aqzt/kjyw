@@ -25,16 +25,22 @@ tar zxvf kafka_2.10-0.9.0.1.tgz
 
 cat >/opt/kafka_2.10-0.9.0.1/config/server.properties<<EOF
 broker.id=0
+port=9092
 listeners=PLAINTEXT://:9092
+host.name=master.storm.com
 num.network.threads=3
 num.io.threads=8
+advertised.host.name=master.storm.com
+advertised.port=9092
+auto.leader.rebalance.enable=true
+delete.topic.enable=true
 socket.send.buffer.bytes=102400
 socket.receive.buffer.bytes=102400
 socket.request.max.bytes=104857600
-log.dirs=/tmp/kafka-logs
+log.dirs=/data/kafka-logs
 num.partitions=1
 num.recovery.threads.per.data.dir=1
-log.retention.hours=168
+log.retention.hours=24
 log.segment.bytes=1073741824
 log.retention.check.interval.ms=300000
 zookeeper.connect=master.storm.com:2181/kafka
@@ -88,6 +94,9 @@ cd /opt/kafka_2.10-0.9.0.1
 ##查看创建的Topic，执行如下命令：
 bin/kafka-topics.sh --create --zookeeper 192.168.142.136:2181/kafka  --replication-factor 1 --partitions 1 --topic mykafka
 
+##修改Topic partitions数量
+bin/kafka-topics.sh --alter --zookeeper 192.168.142.136:2181/kafka  --partitions 6 --topic  mykafka
+
 ##列出所有主题
 bin/kafka-topics.sh --list --zookeeper 192.168.142.136:2181/kafka
 bin/kafka-topics.sh --describe --zookeeper 192.168.142.136:2181/kafka --topic mykafka
@@ -101,8 +110,9 @@ bin/kafka-console-consumer.sh --zookeeper 192.168.142.136:2181/kafka --topic myk
 ##删除topic
 cd /opt/kafka_2.10-0.9.0.1
 bin/kafka-topics.sh --delete --zookeeper 192.168.142.136:2181/kafka --topic mykafka
-##执行后，该topic会被kafka标记为删除，还需要在zookeeper中手动删除相关的节点：
-[zk: localhost:2181(CONNECTED) 5] rmr /brokers/topics/mykafka
+##执行后，该topic会被kafka标记为删除，如果要立刻删除配置中需配置delete.topic.enable=true，有配置无需执行下面zookeeper删除操作
+##在zookeeper中手动删除相关的节点：
+##[zk: localhost:2181(CONNECTED) 5] rmr /brokers/topics/mykafka
 
 
 #######confluent启动
