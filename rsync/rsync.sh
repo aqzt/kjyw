@@ -15,3 +15,7 @@ time1=$(date '+%Y-%m-%d-%H-test2_access.log')
 cat /dev/null > /data/nginx/log/test1_access.log
 cat /dev/null > /data/nginx/log/test2_access.log
 find /data/nginx/log/ -ctime +5 -exec rm -f {} \;
+
+##剪切参考，IO速度限制的cp和mv(限速1024 KB/s)
+##cp: rsync --bwlimit=1024 {src} {dest}
+##mv: rsync --bwlimit=1024 --remove-source-files {src} {dest}
