@@ -14,7 +14,7 @@ echo "end num"
 read num2
 echo -en "\n"
 n=$num1
-for ((n=$num1;n<$num2;n++))
+for ((n=$num1;n<=$num2;n++))
 do
 echo "port:$n ok"
 mkdir -p /opt/redis/redis_$n
@@ -31,7 +31,7 @@ echo "end num"
 read num2
 echo -en "\n"
 n=$num1
-for ((n=$num1;n<$num2;n++))
+for ((n=$num1;n<=$num2;n++))
 do
 echo "port:$n ok"
 /opt/redis/bin/redis-server /opt/redis/redis_$n/redis.conf
@@ -45,7 +45,7 @@ echo "end num"
 read num2
 echo -en "\n"
 n=$num1
-for ((n=$num1;n<$num2;n++))
+for ((n=$num1;n<=$num2;n++))
 do
 echo "port:$n ok"
 ps -ef | grep 'redis' | grep $n | grep -v 'grep' | awk '{print $2}' | xargs kill

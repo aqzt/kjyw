@@ -21,7 +21,7 @@ cp src/redis-sentinel /opt/redis/bin/
 cp src/redis-server /opt/redis/bin/
 
 cd ..
-
+cp conf/redis.conf /opt/redis/redis.conf
 
 echo vm.overcommit_memory=1 >> /etc/sysctl.conf
 sysctl -p
