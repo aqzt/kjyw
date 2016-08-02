@@ -29,3 +29,30 @@ do
   echo  $line;  
 done  
 IFS=$SAVEIFS 
+
+
+#生成192.168.10.1到192.168.10.254  IP列表
+for((i=1;i<=254;i++));do echo 192.168.10.$i;done
+
+for((i=1;i<=10;i++));do echo $(expr $i \* 4);done
+
+#在shell中常用的是 for i in $(seq 10);do echo $i;done
+for i in `ls`;do echo $i;done
+for i in ${arr[@]};do echo $i;done
+for i in $* ;do echo $i;done
+
+##循环打印某文件内容
+for File in /proc/sys/net/ipv4/conf/*/accept_redirects; do
+echo $File
+done
+
+#直接指定循环内容
+for i in f1 f2 f3 ;do
+echo $i
+done
+
+##C 语法for 循环
+for (( i=0; i<10; i++)); do
+echo $i
+done
+
