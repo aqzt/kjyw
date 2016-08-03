@@ -1,0 +1,6 @@
+[test]
+192.168.1.12  ansible_ssh_user=root
+
+[web]
+192.168.1.61  ansible_ssh_user=root
+192.168.1.62  ansible_ssh_user=root
