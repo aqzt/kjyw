@@ -56,3 +56,5 @@ for (( i=0; i<10; i++)); do
 echo $i
 done
 
+##批量修改文件后缀，conf改cfg
+for i in *.conf;do mv $i $(sed "s/conf/cfg/" <<<$i);done
