@@ -6,8 +6,7 @@
 ##centos 6
 
 ##SSH持久化socket
-cat /home/php/.ssh/config
-
+cat >/home/php/.ssh/config<<EOF
 Host *
   Compression yes
   ServerAliveInterval 60
@@ -15,10 +14,13 @@ Host *
   ControlMaster auto
   ControlPath ~/.ssh/sockets/%r@%h-%p
   ControlPersist 4h
-  
+EOF
+
+cat /home/php/.ssh/config
+
 
 ##SSH配置优化
-cat /etc/ssh/sshd_config
+cat >/etc/ssh/sshd_config<<EOF
 Port 22
 AddressFamily inet
 ListenAddress 0.0.0.0
@@ -35,6 +37,9 @@ UsePAM yes
 UseDNS no
 X11Forwarding yes
 Subsystem       sftp    /usr/libexec/openssh/sftp-server
+EOF
+
+cat /etc/ssh/sshd_config
 
 
 ##SSH禁止IPv6,只要ipv4

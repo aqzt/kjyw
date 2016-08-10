@@ -7,7 +7,7 @@
 
 
 ##SSH配置优化
-cat /etc/ssh/sshd_config
+cat >/etc/ssh/sshd_config<<EOF
 Port 22
 AddressFamily inet
 ListenAddress 0.0.0.0
@@ -32,6 +32,9 @@ AcceptEnv LC_PAPER LC_NAME LC_ADDRESS LC_TELEPHONE LC_MEASUREMENT
 AcceptEnv LC_IDENTIFICATION LC_ALL LANGUAGE
 AcceptEnv XMODIFIERS
 Subsystem       sftp    /usr/libexec/openssh/sftp-server
+EOF
+
+cat /etc/ssh/sshd_config
 
 
 ##SSH禁止IPv6,只要ipv4
