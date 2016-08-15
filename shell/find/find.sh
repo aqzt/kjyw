@@ -19,6 +19,7 @@ find /data/file1 -name .git -print0 | xargs -0 rm -r -f
 #删除5天之前的日志
 find /data/nginx/log/ -ctime +5 -exec rm -f {} \;
 find /data/logs -ctime +5 -exec rm -f {} \;
+find /data/logs -name "localhost_access_log*.txt" -type f -mtime +5 -print -exec rm -f {} \;
 
 ##找出 n 天前的文件
 find /temp/ -type f -mtime +n -print
