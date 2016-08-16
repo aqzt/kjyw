@@ -22,6 +22,10 @@ awk -F':' '{print $1 ":" $2 ":" $3; for(i=1;i<=3;i++)$i=""; print}'
 #awk -F '\t'来表示分隔符，比如
 awk -F '\t' '{print $1}' file1.txt 
 
+##多个空格分隔的方法
+awk -F '[ ]+' '{print $9}'
+ls -lh /etc/sysconfig/network-scripts/ifcfg-* | awk -F '[ ]+' '{print $9}'
+
 ##指定分隔符既可以为空格，又可以为冒号，那么处理将会变得简单。可以使用正则表达式来指定多个分隔符，格式为 -F'[空格:]+' 如下
 awk -F'[ :]+' '{print $NF"\t"$(NF-2)}'  file1.txt 
 
