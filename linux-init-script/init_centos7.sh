@@ -196,7 +196,7 @@ chmod  +x /opt/sh/ipt.sh
 /sbin/iptables -nL
 /sbin/iptables -t raw -L -n
 
-echo "/opt/sh/ipt.sh"  >>/etc/rc.d/rc.local
+#echo "/opt/sh/ipt.sh"  >>/etc/rc.d/rc.local
 }
 
 
@@ -280,6 +280,7 @@ source /etc/bashrc
 service_config(){
 /usr/bin/systemctl stop  firewalld.service 
 /usr/bin/systemctl disable  firewalld.service
+/usr/bin/systemctl enable iptables.service
 /usr/bin/systemctl enable NetworkManager-wait-online.service
 /usr/bin/systemctl start NetworkManager-wait-online.service
 /usr/bin/systemctl stop postfix.service
