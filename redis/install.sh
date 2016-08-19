@@ -28,3 +28,9 @@ sysctl -p
 #sysctl vm.overcommit_memory=1 
 ##或执行
 #echo vm.overcommit_memory=1 >>/proc/sys/vm/overcommit_memory
+
+##释放内存
+#sync && echo 3 > /proc/sys/vm/drop_caches
+
+##测试连接
+#/opt/redis/bin/redis-cli -h 192.168.1.12 -p 7121 -a Msxxsdsdsfaqqqqqq
