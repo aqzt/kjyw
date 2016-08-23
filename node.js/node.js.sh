@@ -13,3 +13,8 @@ nvm install v0.10.33
 nvm install v4.4.4
 npm install -g pm2
 pm2 list
+
+
+##修改环境变量方法
+##vi /etc/profile
+##export PATH=/root/.nvm/versions/node/v4.4.5/bin:/usr/local/jdk/bin:/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin:/opt/dell/srvadmin/bin:/opt/dell/srvadmin/sbin:/root/bin

@@ -19,6 +19,12 @@ awk -F ":" '{ for(i=1;i<=3;i++) printf("%s:",$i)}'
 awk -F':' '{print $1 ":" $2 ":" $3; print $4}'
 awk -F':' '{print $1 ":" $2 ":" $3; for(i=1;i<=3;i++)$i=""; print}'
 
+##awk打印用户和密码
+cat test.log  |awk -F '[ ]+' '{print $1 "   " $2}'
+
+##排序显示重复项目
+cat test.log |awk -F '[ ]+' '{print $1}'| sort | uniq -c | sort -nr
+
 #awk -F '\t'来表示分隔符，比如
 awk -F '\t' '{print $1}' file1.txt 
 

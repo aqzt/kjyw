@@ -11,7 +11,7 @@ tar zxvf ss5-3.8.9-8.tar.gz
 cd ss5-3.8.9-8
 ./configure && make && make install
 
-cat >/etc/opt/ss5/ss5.conf<<EOF
+cat >/etc/opt/ss5/ss5.passwd<<EOF
 test 123123
 aaa  123123
 bbb  123123
