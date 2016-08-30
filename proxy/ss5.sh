@@ -5,7 +5,7 @@
 ## robert yu
 ## centos 7
 
-yum -y install gcc gcc-c++ automake make pam-devel openldap-devel cyrus-sasl-devel 
+yum -y install gcc gcc-c++ automake make pam-devel openldap-devel cyrus-sasl-devel  openssl-devel
 wget http://jaist.dl.sourceforge.net/project/ss5/ss5/3.8.9-8/ss5-3.8.9-8.tar.gz
 tar zxvf ss5-3.8.9-8.tar.gz
 cd ss5-3.8.9-8
