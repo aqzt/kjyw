@@ -19,7 +19,7 @@ NGINX_COMPILE_COMMAND="./configure \
                         --with-md5=/usr/lib \
                         --with-sha1=/usr/lib \
                         --with-http_gzip_static_module"
-yum -y install zlib zlib-devel openssl openssl-devel pcre pcre-devel gcc-c++
+yum -y install zlib zlib-devel openssl openssl-devel pcre pcre-devel gcc gcc-c++ make
 tar zxvf $NGINX_PCRE_VERSION.tar.gz 
 cd $NGINX_PCRE_VERSION
 ./configure && make && make install
