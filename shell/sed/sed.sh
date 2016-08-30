@@ -25,3 +25,18 @@ sed -i "s/10.0.0.75/10.0.0.76/g" `find . -type f -name "*.properties"`
 sed -i "s/10.0.0.18/10.0.0.17/g" `find . -type f -name "*.properties"`
 sed -i "s/10.0.0.16/10.0.0.17/g" `find . -type f -name "*.php"`
 sed -i "s/d12/111222/g" `find . -type f -name "*.properties"`
+
+
+#sed删除文件倒数10行
+#把文件倒序
+sed -i '1!G;$!h;$!d' filename  
+#删除10行
+sed -i '1,10d' filename     
+#把文件倒序回来  
+sed -i '1!G;$!h;$!d' filename  
+
+nl file | tail -n 10 | awk 'NR == 1 '{print $1}' 
+
+awk 'BEGIN{CMD="wc -l file";CMD|getline i}NR<=(i-10)' file
+sed -n ':a;1,10!{P;N;D;};N;ba' file
+

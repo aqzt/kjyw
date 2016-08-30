@@ -5,7 +5,7 @@
 ##robert yu
 ##centos 6
 
-
+yum install -y gcc  net-snmp
 
 cat >/etc/snmp/snmpd.conf<<EOF
 com2sec notConfigUser 127.0.0.1 public
@@ -20,4 +20,5 @@ access notConfigGroup "" any noauth exact all none none
 dontLogTCPWrappersConnects yes
 EOF
 
+/sbin/chkconfig snmpd on
 /sbin/service snmpd restart
