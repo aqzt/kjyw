@@ -37,3 +37,9 @@ if [ int1 -ge int2 ]      # 如果>=
 if [ int1 -gt int2 ]      # 如果>
 if [ int1 -le int2 ]      # 如果<=
 if [ int1 -lt int2 ]      # 如果<
+
+if [ "$check" == "" ];then
+    echo ${line}
+else
+    echo 111
+fi
