@@ -292,44 +292,46 @@ chmod +x /etc/rc.d/rc.local
 
 # 路由设置
 route_config(){
-localip=`ip a|grep "inet "|awk -F" " '{print $2}'|awk -F"/" '{print $1}'|egrep "^192" |head -n 1 |awk -F '[.]' '{print $3}'`
-if [ "$localip" == "10" ];then
-	echo "/usr/sbin/route add -net 192.168.20.0 netmask 255.255.255.0 gw 192.168.1.1">/opt/sh/route.sh
-	echo "route -n">>/opt/sh/route.sh
-fi
-if [ "$localip" == "20" ];then
-	echo "/usr/sbin/route add -net 192.168.10.0 netmask 255.255.255.0 gw 192.168.2.1">/opt/sh/route.sh
-	echo "route -n">>/opt/sh/route.sh
-fi
-chmod +x /opt/sh/route.sh
-/opt/sh/route.sh
-echo "/opt/sh/route.sh"  >>/etc/rc.local
+#localip=`ip a|grep "inet "|awk -F" " '{print $2}'|awk -F"/" '{print $1}'|egrep "^192" |head -n 1 |awk -F '[.]' '{print $3}'`
+#if [ "$localip" == "10" ];then
+#	echo "/usr/sbin/route add -net 192.168.20.0 netmask 255.255.255.0 gw 192.168.1.1">/opt/sh/route.sh
+#	echo "route -n">>/opt/sh/route.sh
+#fi
+#if [ "$localip" == "20" ];then
+#	echo "/usr/sbin/route add -net 192.168.10.0 netmask 255.255.255.0 gw 192.168.2.1">/opt/sh/route.sh
+#	echo "route -n">>/opt/sh/route.sh
+#fi
+#chmod +x /opt/sh/route.sh
+#/opt/sh/route.sh
+#echo "/opt/sh/route.sh"  >>/etc/rc.local
+echo ok
 }
 
 # VIM设置
 vim_config(){
 cat > /root/.vimrc << EOF
 set history=1000
-autocmd InsertLeave * se cul
-autocmd InsertLeave * se nocul
-set nu
-set bs=2
-syntax on
-set laststatus=2
-set tabstop=4
-set go=
-set ruler
-set showcmd
-set cmdheight=1
-hi CursorLine   cterm=NONE ctermbg=blue ctermfg=white guibg=blue guifg=white
-set hls
-set cursorline
-set ignorecase
-set hlsearch
-set incsearch
-set helplang=cn
 
 EOF
+
+#autocmd InsertLeave * se cul
+#autocmd InsertLeave * se nocul
+#set nu
+#set bs=2
+#syntax on
+#set laststatus=2
+#set tabstop=4
+#set go=
+#set ruler
+#set showcmd
+#set cmdheight=1
+#hi CursorLine   cterm=NONE ctermbg=blue ctermfg=white guibg=blue guifg=white
+#set hls
+#set cursorline
+#set ignorecase
+#set hlsearch
+#set incsearch
+#set helplang=cn
 }
 
 

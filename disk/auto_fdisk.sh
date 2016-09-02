@@ -37,7 +37,7 @@ fi
 check_disk()
 {
   >$LOCKfile
-  device_list=$(fdisk -l|grep "Disk"|grep "/dev"|awk '{print $2}'|awk -F: '{print $1}'|grep "sd")
+  device_list=$(fdisk -l|grep "dev"|grep "sd"|awk -F [：] '{print $1}' |awk '{print $2}' |awk -F: '{print $1}' |head -n 1)
   fdisk -l|grep "sda" |grep "dev" |grep Linux |grep "sd"|awk '{print $1}' >$tmp1
 }
 
