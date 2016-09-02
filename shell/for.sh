@@ -58,3 +58,13 @@ done
 
 ##批量修改文件后缀，conf改cfg
 for i in *.conf;do mv $i $(sed "s/conf/cfg/" <<<$i);done
+
+
+##for循环每秒执行脚本
+#!/bin/bash
+while true; do 
+   sudo sh /data/shell/check_slave.sh
+    sleep 1
+done
+
+
