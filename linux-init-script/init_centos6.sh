@@ -82,7 +82,7 @@ sed -i "/^ulimit -SHn.*/d" /etc/profile
  
 cat >> /etc/profile << EOF
 
-ulimit -u 102400
+ulimit -u 1024000
 ulimit -d unlimited
 ulimit -m unlimited
 ulimit -s unlimited
@@ -189,7 +189,7 @@ cat > /opt/sh/ipt.sh << EOF
 /sbin/iptables -t raw -A OUTPUT -s 192.168.10.0/255.255.255.0 -p tcp --sport 80  -j NOTRACK
 /sbin/iptables -t raw -A OUTPUT -s 192.168.20.0/255.255.255.0 -p tcp --sport 80  -j NOTRACK
 /sbin/iptables -A INPUT   -s 192.168.10.0/255.255.255.0 -p tcp --dport 22  -j ACCEPT
-/sbin/iptables -A INPUT   -s 192.168.20.0/255.255.255.0 -p tcp --dport 22  -j ACCEPT
+/sbin/iptables -A INPUT   -s 192.168.56.0/255.255.255.0 -p tcp --dport 22  -j ACCEPT
 /sbin/iptables -A INPUT   -s 192.168.10.0/255.255.255.0 -p icmp -j ACCEPT
 /sbin/iptables -A INPUT   -s 192.168.20.0/255.255.255.0 -p icmp -j ACCEPT
 
@@ -206,7 +206,7 @@ chmod  +x /opt/sh/ipt.sh
 /sbin/iptables -nL
 /sbin/iptables -t raw -L -n
 
-echo "/opt/sh/ipt.sh"  >>/etc/rc.d/rc.local
+#echo "/opt/sh/ipt.sh"  >>/etc/rc.d/rc.local
 }
 
 
@@ -276,6 +276,8 @@ service_config(){
 chkconfig bluetooth off > /dev/null 2>&1
 chkconfig cups off  > /dev/null 2>&1
 chkconfig ip6tables off  > /dev/null 2>&1
+chkconfig iptables on
+chkconfig network on
 chkconfig | grep -E "cups|ip6tables|bluetooth"
 chmod +x /etc/rc.local
 chmod +x /etc/rc.d/rc.local
@@ -284,43 +286,25 @@ chmod +x /etc/rc.d/rc.local
 
 # 路由设置
 route_config(){
-localip=`ip a|grep "inet "|awk -F" " '{print $2}'|awk -F"/" '{print $1}'|egrep "^192" |head -n 1 |awk -F '[.]' '{print $3}'`
-if [ "$localip" == "10" ];then
-	echo "/sbin/route add -net 192.168.20.0 netmask 255.255.255.0 gw 192.168.1.1">/opt/sh/route.sh
-	echo "/sbin/route -n">>/opt/sh/route.sh
-fi
-if [ "$localip" == "20" ];then
-	echo "/sbin/route add -net 192.168.10.0 netmask 255.255.255.0 gw 192.168.2.1">/opt/sh/route.sh
-	echo "/sbin/route -n">>/opt/sh/route.sh
-fi
-chmod +x /opt/sh/route.sh
-/opt/sh/route.sh
-echo "/opt/sh/route.sh"  >>/etc/rc.local
+#localip=`ip a|grep "inet "|awk -F" " '{print $2}'|awk -F"/" '{print $1}'|egrep "^192" |head -n 1 |awk -F '[.]' '{print $3}'`
+#if [ "$localip" == "10" ];then
+#	echo "/sbin/route add -net 192.168.20.0 netmask 255.255.255.0 gw 192.168.1.1">/opt/sh/route.sh
+#	echo "/sbin/route -n">>/opt/sh/route.sh
+#fi
+#if [ "$localip" == "20" ];then
+#	echo "/sbin/route add -net 192.168.10.0 netmask 255.255.255.0 gw 192.168.2.1">/opt/sh/route.sh
+#	echo "/sbin/route -n">>/opt/sh/route.sh
+#fi
+#chmod +x /opt/sh/route.sh
+#/opt/sh/route.sh
+#echo "/opt/sh/route.sh"  >>/etc/rc.local
+echo ok
 }
 
 # VIM设置
 vim_config(){
 cat > /root/.vimrc << EOF
 set history=1000
-autocmd InsertLeave * se cul
-autocmd InsertLeave * se nocul
-set nu
-set bs=2
-syntax on
-set laststatus=2
-set tabstop=4
-set go=
-set ruler
-set showcmd
-set cmdheight=1
-hi CursorLine   cterm=NONE ctermbg=blue ctermfg=white guibg=blue guifg=white
-set hls
-set cursorline
-set ignorecase
-set hlsearch
-set incsearch
-set helplang=cn
-
 EOF
 }
 
@@ -342,7 +326,6 @@ main(){
     zone_time
     limits_config
     sysctl_config
-    
     selinux_config
     iptables_config
     sshd_config
