@@ -5,6 +5,8 @@
 ##robert yu
 ##centos 6
 
+yum -y install gcc+ gcc-c++
+
 ##访问https://github.com/creationix/nvm查看
 curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.31.1/install.sh | bash
 ##Haraka指定版本
