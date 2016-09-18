@@ -1,19 +1,19 @@
 #!/bin/bash
-##   2016-05-30
+## shell常用命令  2016-05-30
 ## http://www.aqzt.com
-##email: ppabc@qq.com
-##robert yu
-##centos 6和centos 7
+## email: ppabc@qq.com
+## robert yu
+## centos 6和centos 7
 
-利用wc命令统计文件行，单词数，字符数，利用sort排序和去重，再结合uniq可以进行词频统计。比如：
+#利用wc命令统计文件行，单词数，字符数，利用sort排序和去重，再结合uniq可以进行词频统计。比如：
 
-$ cat file.txt
+cat file.txt
 aqztcom
 aqztcom-talk
 aqztcom-yun
 aqztcom
 aqztcom-shuo
-$ sort file.txt | uniq -c | sort -nr | head -5
+sort file.txt | uniq -c | sort -nr | head -5
    2 aqztcom
    1 aqztcom-shuo
    1 aqztcom-talk
@@ -33,6 +33,31 @@ find：查找文件，并且对查找结果批量化执行任务
 sed：流编辑器，批量修改、替换文件
 split：对大文件进行切分处理，按多少行一个文件，或者多少字节一个文件
 rename：批量重命名(Ubuntu上带的perl脚本，其它系统需要安装)，使用-n命令进行测试
+
+#如果想临时计时跑满下CPU，一个进程跑满一个核。可以用如下命令：
+timeout 600 bash -c "while [ 1 ];do echo 'a' > /dev/null; done"
+
+#查nagios告警Warning太多IP,并排序重复次数
+cat nagios-09-18-2016-00.log  |grep mail  |grep Warning |grep em |grep Traffic > 1.log
+cat nagios-09-18-2016-00.log  |grep mail  |grep Warning |grep em |grep Traffic | awk -F '[;]' '{print $2}' >2.log
+sort 2.log | uniq -c | sort -n > 3.log
+
+#查nagios告警Critical太多IP,并排序重复次数
+cat nagios-09-18-2016-00.log  |grep mail  |grep Critical |grep em |grep Traffic > 1.log
+cat nagios-09-18-2016-00.log  |grep mail  |grep Critical |grep em |grep Traffic | awk -F '[;]' '{print $2}' >2.log
+sort 2.log | uniq -c | sort -n > 3.log
+
+#查nagios全部告警太多IP,并排序重复次数
+cat nagios-09-18-2016-00.log  |grep mail  > 1.log
+cat nagios-09-18-2016-00.log  |grep mail  | awk -F '[;]' '{print $2}' >2.log
+sort 2.log | uniq -c | sort -n > 3.log
+
+#查日志请求量变多，排序
+awk -F'`;' '{print $12}' web_proxy_access_data_nginx.log | sort | uniq -c | sort -rn
+awk -F'`;' '{print $12}' web_proxy_access_data_nginx.log | sort | uniq -c | sort -rn | head -n 10
+
+#查日志域名查看接口请求情况
+awk -F'`;' '{print $7}' data_nginx.log | awk -F'?' '{print$1}' |  sort| uniq -c | sort -n -k 1 -r | head -n 10
 
 # 解压缩日志
 $ gzip -d a.gz
