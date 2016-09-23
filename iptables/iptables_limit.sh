@@ -1,12 +1,12 @@
-#!/bin/bash
+﻿#!/bin/bash
 ## Iptables 2016-09-23
 ## http://www.aqzt.com
 ## email: ppabc@qq.com
 ## robert yu
 ## centos 6
 ## iptables 流量限制，可以通过调整--limit-burst 10值来控制流入 流出
-## --limit 1/s 表示每秒一次; 1/m 则为每分钟一次 。
-## --limit-burst 表示允许触发 limit 限制的最大次数 (预设 5)。
+## --limit 1/s 表示每秒一次; 1/m 则为每分钟一次
+## --limit-burst 表示允许触发 limit 限制的最大次数 (预设 5)
 
 /sbin/iptables -F
 
