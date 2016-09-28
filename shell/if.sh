@@ -43,3 +43,10 @@ if [ "$check" == "" ];then
 else
     echo 111
 fi
+
+##注释多行方法
+if false; then
+ echo "ni"
+ echo "ni"
+ echo "ni"
+fi
