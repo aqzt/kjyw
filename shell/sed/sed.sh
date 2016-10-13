@@ -17,7 +17,12 @@ sed -i -c -e '/^$/d;/^#/' config_file
 ##在某字符串下面一行增加一字符串
 sed -i '/fastcgi_path_info/a\fastcgi_param ENV_VAR_MY test;' test*.conf
 
+#假设处理的文本为test.file
+#在每行的头添加字符，比如"HEAD"，命令如下：
+sed 's/^/HEAD&/g' test.file
 
+#在每行的行尾添加字符，比如“TAIL”，命令如下：
+sed 's/$/&TAIL/g' test.file
 
 ##替换某些后缀文件中的字符
 sed -i "s/text_to_replace/replacement/g" `find . -type f -name <filename>`
@@ -25,7 +30,6 @@ sed -i "s/10.0.0.75/10.0.0.76/g" `find . -type f -name "*.properties"`
 sed -i "s/10.0.0.18/10.0.0.17/g" `find . -type f -name "*.properties"`
 sed -i "s/10.0.0.16/10.0.0.17/g" `find . -type f -name "*.php"`
 sed -i "s/d12/111222/g" `find . -type f -name "*.properties"`
-
 
 #sed删除文件倒数10行
 #把文件倒序

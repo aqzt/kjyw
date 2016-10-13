@@ -13,7 +13,8 @@ strings /lib64/libc.so.6 |grep GLIBC_
 yum install -y  curl openssh-server openssh-clients postfix cronie git nmap unzip wget lsof xz gcc make vim  curl gcc-c++ libtool
 
 cd /opt/
-wget http://ftp.gnu.org/gnu/glibc/glibc-2.14.tar.gz
+#wget http://ftp.gnu.org/gnu/glibc/glibc-2.14.tar.gz
+wget http://ftp.gnu.org/gnu/glibc/glibc-2.24.tar.xz
 
 tar zxvf glibc-2.14.tar.gz
 cd glibc-2.14
