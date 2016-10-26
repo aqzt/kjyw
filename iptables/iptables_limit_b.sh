@@ -22,15 +22,18 @@
 /sbin/iptables -A INPUT  -p tcp --dport 22  -j ACCEPT
 /sbin/iptables -A INPUT  -p tcp --dport 80  -j ACCEPT
 /sbin/iptables -A INPUT -m state --state ESTABLISHED,RELATED  -m limit --limit 2500/sec --limit-burst 200 -j ACCEPT
-/sbin/iptables -A INPUT  -m limit --limit 2500/sec --limit-burst 200 -j ACCEPT 
-/sbin/iptables -A INPUT  -j DROP
-/sbin/iptables -A FORWARD  -m limit --limit 2500/sec --limit-burst 200 -j ACCEPT 
-/sbin/iptables -A FORWARD  -j DROP
-/sbin/iptables -A OUTPUT   -m limit --limit 2500/sec --limit-burst 200 -j ACCEPT 
-/sbin/iptables -A OUTPUT   -j DROP
+/sbin/iptables -A INPUT -s 192.168.1.0/24 -m limit --limit 2500/sec --limit-burst 200 -j ACCEPT 
+/sbin/iptables -A INPUT -j DROP
+/sbin/iptables -A FORWARD -d 192.168.1.0/24 -m limit --limit 2500/sec --limit-burst 200 -j ACCEPT
+/sbin/iptables -A FORWARD -d 192.168.1.0/24 -j DROP
+/sbin/iptables -A FORWARD -s 192.168.1.0/24 -m limit --limit 2500/sec --limit-burst 200 -j ACCEPT
+/sbin/iptables -A FORWARD -s 192.168.1.0/24 -j DROP
+/sbin/iptables -A OUTPUT -s 192.168.1.0/24 -m limit --limit 2500/sec --limit-burst 200 -j ACCEPT 
+/sbin/iptables -A OUTPUT -j DROP
 /sbin/iptables -A INPUT -j REJECT
 /sbin/iptables -A FORWARD -j REJECT
 /sbin/iptables -A OUTPUT -j ACCEPT
 
 /sbin/service iptables save
 echo ok
+
