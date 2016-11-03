@@ -20,3 +20,15 @@ pm2 list
 ##修改环境变量方法
 ##vi /etc/profile
 ##export PATH=/root/.nvm/versions/node/v4.4.5/bin:/usr/local/jdk/bin:/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin:/opt/dell/srvadmin/bin:/opt/dell/srvadmin/sbin:/root/bin
+##export PATH=$PATH:/root/.nvm/versions/node/v4.4.4/bin
+
+
+##修改npm源地址
+npm config set registry http://registry.npm.taobao.org
+##或者
+echo "registry=http://registry.npm.taobao.org"  > /root/.npmrc
+
+##查看npm源地址
+npm config get registry
+
+
