@@ -52,11 +52,12 @@ mkdir -p /data/zookeeper/
 
 tar zxvf zk.tar
 cat >/opt/zk/conf/zoo.cfg<<EOF
-maxClientCnxns=50
+maxClientCnxns=500
 tickTime=2000
 initLimit=10
 syncLimit=5
 dataDir=/data/zookeeper/
+dataLogDir=/data/zookeeper/logs
 clientPort=2181
 server.1=master.storm.com:2888:3888
 EOF

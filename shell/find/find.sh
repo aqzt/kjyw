@@ -20,7 +20,7 @@ find /data/file1 -name .git -print0 | xargs -0 rm -r -f
 find /data/nginx/log/ -ctime +5 -exec rm -f {} \;
 find /data/logs -ctime +5 -exec rm -f {} \;
 find /data/logs -name "localhost_access_log*.txt" -type f -mtime +5 -print -exec rm -f {} \;
-
+find /data/zookeeper/logs -name "log.*" -type f -mtime +5 -print -exec rm -f {} \;
 
 ##删除目录下所有的 .svn 隐藏子目录
 find . -name .svn -print0 | xargs -0 rm -r -f
