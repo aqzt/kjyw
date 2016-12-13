@@ -5,10 +5,14 @@
 ## robert yu
 ## centos 6和centos 7
 
-生成16位随机密码
+##Mutt 发送测试邮件
+echo "邮件内容123456" | mutt -s “邮件标题测试邮件” -a /home/test.txt aaa@test.com
+echo "mail test 123"  | mail -s "mail_test"  aaa@test.com
+
+##生成16位随机密码
 openssl rand -base64 12
 
-生成32位随机密码
+##生成32位随机密码
 openssl rand -base64 24
 
 批量创建文件夹

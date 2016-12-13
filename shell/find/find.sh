@@ -6,9 +6,13 @@
 ##centos 6和centos 7
 ##运维就是踩坑，踩坑的最高境界就是：踩遍所有的坑，让别人无坑可踩！
 
+匹配字符串，找出存在字符串文件
+find /data -name "*.php" -type f -print0|xargs -0 egrep "(phpspy|c99sh|milw0rm|eval\(base64_decode|spider_bc)"|awk -F: '{print $1}'|sort|uniq
+find /data -name "*.php" -type f -print0|xargs -0 egrep "aaa"|awk -F: '{print $1}'|sort|uniq
+find . -name "*.php" -type f -print0| xargs -0 egrep  "aaa|bbb"| egrep "aaa"
+
 ##cd  /var/cache/yum找*.rpm移动到一个文件夹
 find  . -name  "*.rpm" -exec cp {} /root/111 \;
-
 
 ##找到*.log日志全部删除
 find . -name *.log | xargs rm
