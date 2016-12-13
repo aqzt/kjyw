@@ -5,8 +5,16 @@
 ## robert yu
 ## centos 6和centos 7
 
-#利用wc命令统计文件行，单词数，字符数，利用sort排序和去重，再结合uniq可以进行词频统计。比如：
+生成16位随机密码
+openssl rand -base64 12
 
+生成32位随机密码
+openssl rand -base64 24
+
+批量创建文件夹
+mkdir 60{00..19}
+
+#利用wc命令统计文件行，单词数，字符数，利用sort排序和去重，再结合uniq可以进行词频统计。比如：
 cat file.txt
 aqztcom
 aqztcom-talk
