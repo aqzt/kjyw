@@ -7,7 +7,7 @@
 
 ## 从linux服务器批量上传/home/test文件夹里面文件到FTP(192.168.1.122)里面wwwroot目录
 
-updir=/home/ppabc/ddd
+updir=/home/test
 todir=wwwroot
 ip=192.168.1.122
 user=test
