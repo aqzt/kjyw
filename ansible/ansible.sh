@@ -70,6 +70,10 @@ ansible webservers -m ping
 ##command: 执行远程主机SHELL命令:
 ansible webservers -m command -a "free -m"
 ansible webservers -m command -a "df -h"
+
+##command模块 [执行远程命令]
+ansible testservers -m command -a 'uname -n'
+
 #检查Ansible节点的运行时间（uptime）
 ansible -m command -a "uptime" 'webservers'
 #检查节点的内核版本
@@ -81,6 +85,15 @@ ansible -m command -a "cat /tmp/command-output.txt" 'webservers'
 ##远程执行MASTER本地SHELL脚本.(类似scp+shell)
 echo "df -h" > ~/test.sh
 ansible webservers -m script -a "~/test.sh"
+
+##script模块 [在远程主机执行主控端的shell/python脚本 ]
+ansible testservers -m script -a '/etc/ansible/test.sh'
+
+##shell模块 [执行远程主机的shell/python脚本]
+ansible testservers -m shell -a 'bash /root/test.sh'
+
+##raw模块 [类似于command模块、支持管道传递]
+ansible testservers -m raw -a "ifconfig eth0 |sed -n 2p |awk '{print \$2}' |awk -F: '{print \$2}'"
 
 ##copy模块
 ##实现主控端向目标主机拷贝文件, 类似scp功能.
