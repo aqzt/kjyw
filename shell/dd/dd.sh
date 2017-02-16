@@ -105,7 +105,17 @@ dd if=/dev/zero bs=8192 count=125000 of=/root/1Gb.file
 2.4.2测试硬盘读写速度 
 dd if=/root/1Gb.file bs=64k | dd of=/dev/null 
 dd if=/dev/zero of=/root/1Gb.file bs=1024 count=1000000 
-通过上两个命令输出的执行时间，可以计算出测试硬盘的读／写速度
+#通过上两个命令输出的执行时间，可以计算出测试硬盘的读／写速度
+#数据传输时间 Ttransfer是指完成传输所请求的数据所需要的时间，它取决于数据传输率，其值等于数据大小除以数据传输率。目前IDE/ATA能达到133MB/s，SATA II可达到300MB/s的接口数据传输率，数据传输时间通常远小于前两部分消耗时间。简单计算时可忽略。
+#测/data目录所在磁盘的纯写速度：
+time dd if=/dev/zero of=/data/1Gb.file bs=8k count=1000000
+
+#测/data目录所在磁盘的纯读速度：
+time dd if=/data/1Gb.file of=/dev/null bs=8k count=1000000
+
+#测读写速度：
+time dd if=/data/1Gb.file of=/tmp/test bs=8k count=1000000
+
 
 2.4.3.修复硬盘 
 dd if=/dev/sda of=/dev/sda 

@@ -14,6 +14,9 @@ mv ${LOGS_PATH}/aqzt.com.log ${LOGS_PATH}/aqzt.com_${YESTERDAY}.log
 
 kill -USR1 `ps axu | grep "nginx: master process" | grep -v grep | awk '{print $2}'`
 
+#或者调用nginx -s  reopen用来打开日志文件，nginx会把新日志写入这个新的文件中
+
+
 #删除7天前的日志
 
 cd ${LOGS_PATH}

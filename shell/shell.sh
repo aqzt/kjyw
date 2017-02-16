@@ -5,6 +5,9 @@
 ## robert yu
 ## centos 6和centos 7
 
+##内存强制释放命令，最好不要在生产环境使用，生产环境需先下线服务，再使用
+echo 3 > /proc/sys/vm/drop_caches
+
 ##Mutt 发送测试邮件
 echo "邮件内容123456" | mutt -s “邮件标题测试邮件” -a /home/test.txt aaa@test.com
 echo "mail test 123"  | mail -s "mail_test"  aaa@test.com

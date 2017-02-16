@@ -9,6 +9,8 @@
 /sbin/iptables -A INPUT -s 192.168.1.112 -j ACCEPT
 /sbin/iptables -A INPUT  -p tcp --dport 443  -j ACCEPT
 /sbin/iptables -A INPUT  -p tcp --dport 80  -j ACCEPT
+##允许ping规则
+##/sbin/iptables -A INPUT  -p icmp  -j ACCEPT
 /sbin/iptables -A INPUT -j REJECT
 /sbin/iptables -A FORWARD -j REJECT
 
