@@ -7,10 +7,10 @@
 
 yum install -y nmap unzip wget lsof xz net-tools gcc make gcc-c++
 
+wget http://download.redis.io/releases/redis-2.8.24.tar.gz
 tar zxvf redis-2.8.24.tar.gz
 cd redis-2.8.24
 make
-make install
 
 mkdir  -p /opt/redis/bin/
 cp src/redis-benchmark /opt/redis/bin/
@@ -21,10 +21,21 @@ cp src/redis-sentinel /opt/redis/bin/
 cp src/redis-server /opt/redis/bin/
 
 cd ..
-cp conf/redis.conf /opt/redis/redis.conf
+#cp conf/redis.conf /opt/redis/redis.conf
+cat >/opt/redis/redis.conf<<EOF
+daemonize yes
+port 7121
+timeout 60
+loglevel warning
+databases 16
+EOF
 
 echo vm.overcommit_memory=1 >> /etc/sysctl.conf
 sysctl -p
+
+echo "/opt/redis/bin/redis-server /opt/redis/redis.conf"
+echo "ok"
+
 #sysctl vm.overcommit_memory=1 
 ##或执行
 #echo vm.overcommit_memory=1 >>/proc/sys/vm/overcommit_memory
