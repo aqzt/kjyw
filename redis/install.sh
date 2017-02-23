@@ -33,7 +33,8 @@ EOF
 echo vm.overcommit_memory=1 >> /etc/sysctl.conf
 sysctl -p
 
-echo "/opt/redis/bin/redis-server /opt/redis/redis.conf"
+/opt/redis/bin/redis-server /opt/redis/redis.conf
+
 echo "ok"
 
 #sysctl vm.overcommit_memory=1 
@@ -44,4 +45,5 @@ echo "ok"
 #sync && echo 3 > /proc/sys/vm/drop_caches
 
 ##测试连接
-#/opt/redis/bin/redis-cli -h 192.168.1.12 -p 7121 -a Msxxsdsdsfaqqqqqq
+#/opt/redis/bin/redis-cli -h 127.0.0.1 -p 7121 
+#/opt/redis/bin/redis-cli -h 127.0.0.1 -p 7121 -a Msxxsdsdsfaqqqqqq

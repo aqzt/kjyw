@@ -77,3 +77,30 @@ if false; then
  echo "ni"
  echo "ni"
 fi
+
+##判断进程是否运行，运行就KILL掉，注意grep -v sh| grep -v grep
+var=`ps -aef | grep $1 | grep -v sh| grep -v grep| awk '{print $2}'`
+if [ !-z "$var"]
+then
+  echo $1 process is not running 
+else
+  kill -9 $var
+  echo $1 process killed forcefully, process id $var.
+fi
+
+
+#查看指定进程是否存在
+#在获取到 pid 之后，还可以根据 pid 查看对应的进程是否存在（运行），这个方法也可以用于 kill 指定的进程。
+if ps -p $PID > /dev/null
+then
+   echo "$PID is running"
+   # Do something knowing the pid exists, i.e. the process with $PID is running
+fi
+
+#查pid循环KILL
+pids=( $(pgrep -f resque) )
+for pid in "${pids[@]}"; do
+  if [[ $pid != $$ ]]; then
+    kill "$pid"
+  fi
+done
