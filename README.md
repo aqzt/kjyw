@@ -11,25 +11,26 @@
 
 
 ## 使用场景
+- 【举个例子】
 - 某天，某人，因某业务，有redis部署需求，需要批量部署一组redis服务，端口从8001到8009，
 - 简单，马上开始部署，拷贝redis执行文件，配置文件，8001，再拷贝redis执行文件，修改配置文件，8002…………
 - 半小时后部署好了，完成！
-
+- 
 - 如果用脚本部署，只需要1分钟搞定，主要是编译redis时间，大大提高效率，快捷，快捷，快捷啊！
 - 第一步 编译redis
 - curl -s https://git.oschina.net/aqztcom/kjyw/raw/master/redis/install.sh | sh
 - 第二步 拷贝redis执行文件，修改配置文件，并启动
 - curl -s https://git.oschina.net/aqztcom/kjyw/raw/master/redis/redis_port.sh | sh -s  install 8001 8009
 - 完成！
-
 - 批量关闭redis端口 8001到8009
 - curl -s https://raw.githubusercontent.com/aqzt/kjyw/master/redis/redis_port.sh  | sh -s  stop 8001 8009
 - 批量启动redis端口 8001到8009
 - curl -s https://raw.githubusercontent.com/aqzt/kjyw/master/redis/redis_port.sh  | sh -s  start 8001 8009
+- 
 - 还有其他运维经常使用的脚本，方便使用，提高效率！
 
 ## 适合使用的职业
-- 运维工程师  （方便运维工程师搭建业务生产环境）
+- 运维工程师  （方便运维工程师搭建业务生产环境，最好先测试脚本，在用于生产环境）
 - 开发工程师  （方便开发工程师搭建开发环境）
 - 测试工程师  （方便测试工程师搭建测试环境）
 
