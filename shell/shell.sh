@@ -5,6 +5,13 @@
 ## robert yu
 ## centos 6和centos 7
 
+##下载脚本并执行
+wget -q -O https://raw.githubusercontent.com/aqzt/kjyw/master/redis/install.sh | sh
+curl -s https://raw.githubusercontent.com/aqzt/kjyw/master/redis/install.sh | sh
+curl -fsSL https://raw.githubusercontent.com/aqzt/kjyw/master/redis/install.sh  | sh
+##传参数
+curl -s https://raw.githubusercontent.com/aqzt/kjyw/master/redis/redis_port.sh  | sh -s  start 8001 8009
+
 ##内存强制释放命令，最好不要在生产环境使用，生产环境需先下线服务，再使用
 echo 3 > /proc/sys/vm/drop_caches
 
