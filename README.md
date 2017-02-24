@@ -23,9 +23,9 @@
 - curl -s https://git.oschina.net/aqztcom/kjyw/raw/master/redis/redis_port.sh | sh -s  install 8001 8009
 - 完成！
 - 批量关闭redis端口 8001到8009
-- curl -s https://raw.githubusercontent.com/aqzt/kjyw/master/redis/redis_port.sh  | sh -s  stop 8001 8009
+- curl -s https://git.oschina.net/aqztcom/kjyw/raw/master/redis/redis_port.sh  | sh -s  stop 8001 8009
 - 批量启动redis端口 8001到8009
-- curl -s https://raw.githubusercontent.com/aqzt/kjyw/master/redis/redis_port.sh  | sh -s  start 8001 8009
+- curl -s https://git.oschina.net/aqztcom/kjyw/raw/master/redis/redis_port.sh  | sh -s  start 8001 8009
 - 
 - 还有其他运维经常使用的脚本，方便使用，提高效率！
 
