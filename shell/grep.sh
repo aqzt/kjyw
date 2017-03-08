@@ -5,6 +5,13 @@
 ## robert yu
 ## centos 6
 
+##cat是用于查看普通文件的。
+cat /etc/passwd
+
+##zcat 是用于查看压缩的文件 
+##gzip 套件包含许多可以 “在原地” 处理压缩文件的实用程序。zcat、zgrep、zless、zdiff 等实用程序的作用分别与 cat、grep、less 和 diff 相同，但是它们操作压缩的文件。
+zcat web.log.gz | grep aqzt.com | head
+ 
 ###Grep 'OR' 或操作
 grep "pattern1\|pattern2" file.txt
 grep -E "pattern1|pattern2" file.txt
