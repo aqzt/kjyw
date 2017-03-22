@@ -19,3 +19,14 @@ find /data/nginx/log/ -ctime +5 -exec rm -f {} \;
 ##剪切参考，IO速度限制的cp和mv(限速1024 KB/s)
 ##cp: rsync --bwlimit=1024 {src} {dest}
 ##mv: rsync --bwlimit=1024 --remove-source-files {src} {dest}
+
+
+##使用ssh方式rsync，不用服务端，简单方便，SSH需要认证，就不用每次输入密码
+#ssh-keygen -t rsa -N '' -f ~/.ssh/id_rsa -q -b 2048 -C "root@test"
+#cat ~/.ssh/id_rsa.pub >> ~/.ssh/authorized_keys
+#chmod 600 ~/.ssh/authorized_keys
+
+rsync -av --exclude=.gitlab-ci.yml --exclude=log --exclude=logs --delete /root/test 192.168.1.119:/root/test1
+
+##rsync 参数的具体可以参考：
+##http://bbs.aqzt.com/thread-138-1-1.html
