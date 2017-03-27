@@ -98,7 +98,7 @@ find . -type f -exec ls -l {} \;
 find logs -type f -mtime +5 -exec   -ok   rm {} \;
 
 
-匹配字符串，找出存在字符串文件
+##匹配字符串，找出存在字符串文件
 find /data -name "*.php" -type f -print0|xargs -0 egrep "(phpspy|c99sh|milw0rm|eval\(base64_decode|spider_bc)"|awk -F: '{print $1}'|sort|uniq
 find /data -name "*.php" -type f -print0|xargs -0 egrep "aaa"|awk -F: '{print $1}'|sort|uniq
 find . -name "*.php" -type f -print0| xargs -0 egrep  "aaa|bbb"| egrep "aaa"

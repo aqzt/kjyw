@@ -205,13 +205,18 @@ dd if=/dev/sda1 of=/abc bs=1024 这里是保存在了根分区，用mount查看�
 这里可以看到刚才的abc文件，输入：mount aa /tmp -o loop
 这里看到就是刚才镜像的文件内容
 
-19 find
-查找指定字符的文件（测试发现二进制也可以发现，是strings后的内容）
+#19 find
+#查找指定字符的文件（测试发现二进制也可以发现，是strings后的内容）
 find /tmp -type f -exec grep “no exist” {} \; -print
-
 find /etc/rc.d -name ‘*crond’ -exec file {} ;
+##匹配字符串，找出存在字符串文件
+find /data -name "*.php" -type f -print0|xargs -0 egrep "(phpspy|c99sh|milw0rm|eval\(base64_decode|spider_bc)"|awk -F: '{print $1}'|sort|uniq
+find /data -name "*.php" -type f -print0|xargs -0 egrep "aaa"|awk -F: '{print $1}'|sort|uniq
+find . -name "*.php" -type f -print0| xargs -0 egrep  "aaa|bbb"| egrep "aaa"
 
-查找/etc/rc.d目录下面所有以crond结束的文件，并使用file指令查看其属性，注意：exec和file间是一个空格，file和{}间是一个空格，file和;之间是一个空格，;是一个整体。
+##首先确定黑客IP，然后通过find命令检查日志文件中，含有黑IP的日志，从而排查程序漏洞点！
+
+##查找/etc/rc.d目录下面所有以crond结束的文件，并使用file指令查看其属性，注意：exec和file间是一个空格，file和{}间是一个空格，file和;之间是一个空格，;是一个整体。
 
 20
 kill -SIGSEGV 进程号 会产生一个core文件，用strings可以看信息，用一个c程序可以重新构建它的可执行程序，study/unix/下保存一个文章。测试没产生core，原因不详。
