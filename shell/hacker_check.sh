@@ -218,8 +218,13 @@ find . -name "*.php" -type f -print0| xargs -0 egrep  "aaa|bbb"| egrep "aaa"
 
 ##查找/etc/rc.d目录下面所有以crond结束的文件，并使用file指令查看其属性，注意：exec和file间是一个空格，file和{}间是一个空格，file和;之间是一个空格，;是一个整体。
 
-20
-kill -SIGSEGV 进程号 会产生一个core文件，用strings可以看信息，用一个c程序可以重新构建它的可执行程序，study/unix/下保存一个文章。测试没产生core，原因不详。
+#20
+#kill -SIGSEGV 进程号 
+#会产生一个core文件，用strings可以看信息，用一个c程序可以重新构建它的可执行程序，study/unix/下保存一个文章。测试没产生core，原因不详。
+
+
+##当前目前(及子目录)下，所有的log文件中搜索字符串hacked by:
+find . -name "*.log" | xargs fgrep "hacked by"
 
 
 
