@@ -1,0 +1,35 @@
+Version 1.0.8
++--------------------------------------------------------------------------------+
+|         === Welcome to lnmp for CentOS/RHEL    Installation! ===               |
++--------------------------------------------------------------------------------+
+|                    This Installation Released by WWW .                       |
++--------------------------------------------------------------------------------+
+|                           Easy to install lnmp!                                |
++--------------------------------------------------------------------------------+
+|               Copyright: (C) 2010 WWW Inc. All rights reserved.              |
++--------------------------------------------------------------------------------+
+
+You can run:
+./lnmp.sh 
+
++--------------------------------------------------------------------------------+
+|                  === Installation Document Description ===                     |
++--------------------------------------------------------------------------------+
+|lnmp SCRIPTS      :         /etc/init.d/lnmp start                              |
+|MySQL SCRIPTS     :         /etc/init.d/mysql start                             |
+|MySQL DATAPATH    :         /data/mysql/3306                                    |
+|SOFTWARE PATH     :         /usr/local/software_name                            |
++--------------------------------------------------------------------------------+
+|    Easy to install lnmp!   Have Fun^_^!     http://www.paopao8.com             |
++--------------------------------------------------------------------------------+
+
+Manager MySQL
+mysql -S /tmp/mysql.sock -uroot -p
+
+%changelog%
+suhosin
+apc
+Eaccelerator
+upgrade php5.2.14 to php5.2.17p1
+
+

