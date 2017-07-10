@@ -1,0 +1,24 @@
+server {
+        listen       80;
+        server_name  localhost;
+	index index.html index.htm index.php;
+	root /alidata/www/default;
+	location ~ .*\.(php|php5)?$
+	{
+		#fastcgi_pass  unix:/tmp/php-cgi.sock;
+		fastcgi_pass  127.0.0.1:9000;
+		fastcgi_index index.php;
+		include fastcgi.conf;
+	}
+	location ~ .*\.(gif|jpg|jpeg|png|bmp|swf)$
+	{
+		expires 30d;
+	}
+	location ~ .*\.(js|css)?$
+	{
+		expires 1h;
+	}
+	#Œ±æ≤Ã¨πÊ‘Ú
+	include /alidata/server/nginx/conf/rewrite/default.conf;
+	access_log  /alidata/log/nginx/access/default.log;
+}
