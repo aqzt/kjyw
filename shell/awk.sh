@@ -5,6 +5,13 @@
 ##robert yu
 ##centos 6和centos 7
 
+##按第六列  重复的删除，并保留一行
+awk '!arr[$6]++' file
+
+##按第2列和第三  重复的删除，并保留一行
+awk '!arr[$2$3]++'  test.log
+awk '!arr[$2_$3]++'  test.log
+
 ##提取两个文件第一列相同的行
 awk -F',' 'NR==FNR{a[$1]=$0;next}NR>FNR{if($1 in a)print $0"\n"a[$1]}' 1.log 2.log
 
