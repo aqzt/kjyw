@@ -1,0 +1,185 @@
+#!/bin/bash
+###nginx install config
+NGINX_ROOT="/data/www/wwwroot"
+NGINX_PORT=80
+NGINX_USER=daemon
+NGINX_GROUP=daemon
+NGINX_VERSION="nginx-1.2.4"
+NGINX_PREFIX="/usr/local/nginx"
+NGINX_PCRE_VERSION="pcre-8.31"
+NGINX_COMPILE_COMMAND="./configure \
+                        --user=$CONF_WWW_USER \
+                        --group=$CONF_WWW_GROUP \
+                        --prefix=$NGINX_PREFIX \
+                        --with-http_stub_status_module \
+                        --with-http_ssl_module \
+                        --with-http_sub_module \
+                        --with-md5=/usr/lib \
+                        --with-sha1=/usr/lib \
+                        --with-pcre=../$NGINX_PCRE_VERSION \
+                        --with-http_gzip_static_module"
+
+###MySQL install config
+MYSQL_PORT=3306
+MYSQL_USER=mysql
+MYSQL_GROUP=mysql
+MYSQL_DATA_DIR="/data/mysql"
+MYSQL_VERSION="mysql-5.1.66"
+MYSQL_PREFIX="/usr/local/$MYSQL_VERSION"
+MYSQL_COMPILE_COMMAND="./configure \
+                        --prefix=$MYSQL_PREFIX \
+                        --with-server-suffix=-WWW \
+                        --with-plugins=partition,blackhole,csv,heap,innobase,myisam,myisammrg \
+                        --with-charset=utf8 \
+                        --with-mysqld-user=$CONF_MYSQL_USER \
+                        --with-collation=utf8_general_ci \
+                        --with-extra-charsets=gbk,gb2312,utf8,ascii \
+                        --with-big-tables \
+                        --with-fast-mutexes \
+                        --with-zlib-dir=bundled \
+                        --enable-assembler \
+                        --enable-profiling \
+                        --enable-local-infile \
+                        --enable-thread-safe-client \
+                        --with-readline \
+                        --with-pthread \
+                        --with-embedded-server \
+                        --with-client-ldflags=-all-static \
+                        --with-mysqld-ldflags=-all-static \
+                        --without-geometry \
+                        --without-debug \
+                        --without-ndb-debug"
+###PHP Lib install config
+PHP_LIBICONV_VERSION="libiconv-1.14"
+PHP_LIBMCRYPT_VERSION="libmcrypt-2.5.8"
+PHP_MHASH_VERSION="mhash-0.9.9.9"
+PHP_MCRYPT_VERSION="mcrypt-2.6.8"
+PHP_SUHOSIN_VERSION="suhosin-patch-5.2.17-0.9.7"
+###PHP install config
+##Php
+PHP_VERSION="php-5.2.17"
+PHP_FPM_USER="daemon"
+PHP_FPM_GROUP="daemon"
+PHP_FPM_MAX_CHILDREN=256
+PHP_FPM_MAX_REQUESTS=1024
+PHP_FPM_VERSION="$PHP_VERSION-fpm-0.5.14"
+PHP_PREFIX="/usr/local/$PHP_VERSION"
+PHP_COMPILE_COMMAND_WITH_MYSQL="./configure \
+                        --prefix=$PHP_PREFIX \
+                        --with-config-file-path=$PHP_PREFIX/etc \
+                        --enable-suhosin \
+                        --enable-fpm \
+                        --enable-fastcgi \
+                        --enable-force-cgi-redirect \
+                        --disable-rpath \
+                        --enable-discard-path \
+                        --with-mysql=$MYSQL_PREFIX \
+                        --with-mysqli=$MYSQL_PREFIX/bin/mysql_config \
+                        --with-pdo-mysql=$MYSQL_PREFIX \
+                        --with-sqlite \
+                        --with-pdo-sqlite \
+                        --with-iconv-dir=/usr/local \
+                        --with-freetype-dir \
+                        --with-jpeg-dir \
+                        --with-png-dir \
+                        --with-gd \
+                        --with-zlib \
+                        --with-libxml-dir \
+                        --with-curl \
+                        --with-curlwrappers \
+                        --with-openssl \
+                        --with-mhash \
+                        --with-xmlrpc \
+                        --with-mcrypt \
+                        --with-ldap \
+                        --with-ldap-sasl \
+                        --enable-xml \
+                        --enable-safe-mode \
+                        --enable-bcmath \
+                        --enable-shmop \
+                        --with-pear \
+                        --with-gmp \
+                        --enable-sysvsem \
+                        --enable-inline-optimization \
+                        --enable-mbregex \
+                        --enable-mbstring \
+                        --enable-gd-native-ttf \
+                        --enable-ftp \
+                        --enable-pcntl \
+                        --enable-sockets \
+                        --enable-zip \
+                        --enable-soap \
+                        --enable-pdo \
+                        --disable-debug \
+                        --disable-ipv6"
+PHP_COMPILE_COMMAND_WITHOUT_MYSQL="./configure \
+                        --prefix=$PHP_PREFIX \
+                        --with-config-file-path=$PHP_PREFIX/etc \
+                        --enable-suhosin \
+                        --enable-fpm \
+                        --enable-fastcgi \
+                        --enable-force-cgi-redirect \
+                        --disable-rpath \
+                        --enable-discard-path \
+                        --with-mysql \
+                        --with-mysqli \
+                        --with-sqlite \
+                        --with-pdo-sqlite \
+                        --with-iconv-dir=/usr/local \
+                        --with-freetype-dir \
+                        --with-jpeg-dir \
+                        --with-png-dir \
+                        --with-gd \
+                        --with-zlib \
+                        --with-libxml-dir \
+                        --with-curl \
+                        --with-curlwrappers \
+                        --with-openssl \
+                        --with-mhash \
+                        --with-xmlrpc \
+                        --with-mcrypt \
+                        --with-ldap \
+                        --with-ldap-sasl \
+                        --enable-xml \
+                        --enable-safe-mode \
+                        --enable-bcmath \
+                        --enable-shmop \
+                        --enable-sysvsem \
+                        --enable-inline-optimization \
+                        --enable-mbregex \
+                        --enable-mbstring \
+                        --enable-gd-native-ttf \
+                        --enable-ftp \
+                        --enable-pcntl \
+                        --enable-sockets \
+                        --enable-zip \
+                        --enable-soap \
+                        --enable-pdo \
+                        --disable-debug \
+                        --disable-ipv6"
+##other php extsion
+PHP_MC_EXT_VERSION="memcache-2.2.6"
+PHP_MCD_EXT_VERSION="memcached-1.0.2"
+PHP_MCD_VERSION="memcached-1.4.5"
+PHP_MCD_PREFIX="/usr/local/$PHP_MCD_VERSION"
+PHP_LIB_VERSION="libevent-1.4.13-stable"
+PHP_LIBMC_VERSION="libmemcached-0.44"
+PHP_LIBMC_PREFIX="/usr/local/libmemcached"
+PHP_IMAGICK_VERSION="imagick-3.0.1"
+PHP_IMAGICK_SOFT="ImageMagick"
+PHP_IMAGICK_SOFT_VERSION="ImageMagick-6.7.1-10"
+PHP_IMAGICK_COMPILE_COMMAND="./configure \
+                        --enable-shared \
+                        --with-modules \
+                        --without-x \
+                        --with-gs-font-dir=default \
+                        --with-perl=yes \
+                        --with-xml=yes \
+                        --with-zlib=yes \
+                        --with-jpeg=yes"
+PHP_APC_VERSION="APC-3.1.6"
+PHP_XCACHE_VERSION="xcache-3.0.0"
+PHP_ZEND_VERSION="ZendOptimizer-3.3.9-linux-glibc23-x86_64"
+PHP_EAC_VERSION="eaccelerator-0.9.6.1"
+
+

@@ -69,11 +69,9 @@ grep -w pattern files
 #匹配的上下文分别显示[number]行，
 grep -C number pattern files 
 
-
-
-
-
-
+#grep -A ：显示匹配行和之后的几行
+#-A -B -C 后面都跟阿拉伯数字，-A是显示匹配后和它后面的n行。-B是显示匹配行和它前面的n行。-C是匹配行和它前后各n行。总体来说，-C覆盖面最大。
+grep -A 5 wikipedia files.txt
 
 
 

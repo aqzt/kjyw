@@ -1,0 +1,79 @@
+#!/bin/bash
+# nginx Startup script for the Nginx HTTP Server
+# this script create it by ruijie. at 2014.02.26
+# if you find any errors on this scripts,please contact ruijie.
+# and send mail to ruijie at gmail dot com.
+#            ruijie.qiao@gmail.com
+
+nginxd=/opt/nginx/sbin/nginx
+nginx_config=/opt/nginx/conf/nginx.conf
+nginx_pid=/opt/nginx/logs/nginx.pid
+
+RETVAL=0
+prog="nginx"
+
+[ -x $nginxd ] || exit 0
+
+# Start nginx daemons functions.
+start() {
+    
+    if [ -e $nginx_pid ] && netstat -tunpl | grep nginx &> /dev/null;then
+        echo "nginx already running...."
+        exit 1
+    fi
+        
+    echo -n $"Starting $prog!"
+    $nginxd -c ${nginx_config}
+    RETVAL=$?
+    echo
+    [ $RETVAL = 0 ] && touch /var/lock/nginx
+    return $RETVAL
+}
+
+
+# Stop nginx daemons functions.
+stop() {
+    echo -n $"Stopping $prog!"
+    $nginxd -s stop
+    RETVAL=$?
+    echo
+    [ $RETVAL = 0 ] && rm -f /var/lock/nginx
+}
+
+
+# reload nginx service functions.
+reload() {
+
+    echo -n $"Reloading $prog!"
+    #kill -HUP `cat ${nginx_pid}`
+    $nginxd -s reload
+    RETVAL=$?
+    echo
+
+}
+
+# See how we were called.
+case "$1" in
+start)
+        start
+        ;;
+
+stop)
+        stop
+        ;;
+
+reload)
+        reload
+        ;;
+
+restart)
+        stop
+        start
+        ;;
+
+*)
+        echo $"Usage: $prog {start|stop|restart|reload|help}"
+        exit 1
+esac
+
+exit $RETVAL
