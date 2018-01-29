@@ -36,7 +36,7 @@ sleep 1
 # 安装必要支持工具及软件工具
 yum_update(){
 yum update -y
-yum install -y nmap unzip wget vim lsof xz net-tools iptables-services ntpdate ntp-doc
+yum install -y nmap unzip wget vim lsof xz net-tools iptables-services ntpdate ntp-doc psmisc
 }
 
 # 设置时间同步 set time

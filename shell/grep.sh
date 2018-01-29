@@ -49,6 +49,19 @@ sed -n '/pattern1/!p' file.txt
 ##删除两个文件相同部分
 grep -v -f file1 file2 && grep -v -f file2 file1 
 
+##计算并集
+sort -u a.txt b.txt
+
+##计算交集
+grep -F -f a.txt b.txt | sort | uniq
+
+##计算差集
+grep -F -v -f b.txt a.txt | sort | uniq
+
+sort a b b | uniq -u  
+#a b 排序，两个的交集出现次就是2 了，a b b 再排序。b里面的次数，最少是2了，交集里面的是3
+然后再uniq -u 取出现一次的，就是想要的结果了
+
 ##删除两个文件相同部分  实用comm
 comm -3 file1 file2
 
