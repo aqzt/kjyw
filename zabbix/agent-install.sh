@@ -1,12 +1,12 @@
 #!/bin/sh
 echo "脚本作者:火星小刘 web:www.huoxingxiaoliu.com email:xtlyk@163.com"
-sleep 10
+sleep 3
 zabbixdir=`pwd`
-zabbix_version=3.0.9
+zabbix_version=3.2.11
 ip=`ip addr |grep inet |egrep -v "inet6|127.0.0.1" |awk '{print $2}' |awk -F "/" '{print $1}'`
 echo "当前目录为:$zabbixdir"
 echo "本机ip为:$ip"
-cat $zabbixdir/Readme
+#cat $zabbixdir/Readme
 read -p  "what's zabbix-server-IP ?:" ServerIP
 echo "zabbix服务器ip为:$ServerIP"
 read -p  "zabbix-server-IP is $ServerIP yes or no:" isY
@@ -23,8 +23,8 @@ useradd -g zabbix zabbix
 
 echo "安装zabbix-agent"
 sleep 3
-#wget http://netix.dl.sourceforge.net/project/zabbix/ZABBIX%20Latest%20Stable/$zabbix_version/zabbix-${zabbix_version}.tar.gz
-wget http://$ServerIP/zabbix/zabbix-${zabbix_version}.tar.gz
+wget http://netix.dl.sourceforge.net/project/zabbix/ZABBIX%20Latest%20Stable/$zabbix_version/zabbix-${zabbix_version}.tar.gz
+#wget http://$ServerIP/zabbix/zabbix-${zabbix_version}.tar.gz
 tar zxvf $zabbixdir/zabbix-${zabbix_version}.tar.gz
 cd $zabbixdir/zabbix-${zabbix_version}
 echo `pwd`
