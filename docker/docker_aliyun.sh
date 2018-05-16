@@ -3,7 +3,7 @@
 # step 1: 安装必要的一些系统工具
 sudo yum install -y yum-utils device-mapper-persistent-data lvm2
 # Step 2: 添加软件源信息
-sudo yum-config-manager --add-repo http://mirrors.selinux.cn/help/docker-tuna.repo
+sudo yum-config-manager --add-repo http://mirrors.selinux.cn/help/docker-aliyun.repo
 ##sudo yum-config-manager --add-repo https://selinux.cn/docker-ce.repo
 # Step 3: 更新并安装 Docker-CE
 sudo yum makecache fast

@@ -4,7 +4,7 @@
 # Filename: install_mariadb.sh
 # Author: roguo.wei - roguo.wei@gmail.com
 # Description: 
-# Last Modified: 2017-01-17 00:31
+# Last Modified: 2018-04-26 14:31
 # Version: 1.0
 ###
 
@@ -12,9 +12,9 @@ INSTALL_DIR="/opt/app"
 DATA_DIR="/opt/data"
 MARIADB_GROUP="mysql"
 MARIADB_USER="mysql"
-MARIADB_VERSION="10.1.20"
+MARIADB_VERSION="10.2.14"
 ROOT_PASSWD="root"
-#mariadb-10.1.20-linux-x86_64.tar.gz
+#mariadb-10.2.14-linux-x86_64.tar.gz
 TAR_NAME="mariadb-${MARIADB_VERSION}-linux-x86_64.tar.gz"
 UNTAR_NAME="mariadb-${MARIADB_VERSION}-linux-x86_64"
 
