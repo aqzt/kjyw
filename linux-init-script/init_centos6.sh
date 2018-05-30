@@ -186,14 +186,14 @@ cat > /opt/sh/ipt.sh << EOF
 /sbin/iptables -A OUTPUT -j ACCEPT
 /sbin/iptables -A INPUT -s 192.168.10.152 -j ACCEPT
 /sbin/iptables -A INPUT -s 192.168.20.102 -j ACCEPT
-/sbin/iptables -A INPUT -s 192.168.10.0/255.255.255.0 -p tcp --dport 80  -j ACCEPT
-/sbin/iptables -A INPUT -s 192.168.20.0/255.255.255.0 -p tcp --dport 80   -j ACCEPT
+/sbin/iptables -A INPUT -p tcp --dport 80  -j ACCEPT
+/sbin/iptables -A INPUT -p tcp --dport 22  -j ACCEPT
+/sbin/iptables -A INPUT -s 192.168.10.0/255.255.255.0 -p tcp --dport 8080  -j ACCEPT
+/sbin/iptables -A INPUT -s 192.168.20.0/255.255.255.0 -p tcp --dport 8080  -j ACCEPT
 /sbin/iptables -t raw -A PREROUTING -s 192.168.10.0/255.255.255.0 -p tcp --dport 80  -j NOTRACK
 /sbin/iptables -t raw -A PREROUTING -s 192.168.20.0/255.255.255.0 -p tcp --dport 80  -j NOTRACK
 /sbin/iptables -t raw -A OUTPUT -s 192.168.10.0/255.255.255.0 -p tcp --sport 80  -j NOTRACK
 /sbin/iptables -t raw -A OUTPUT -s 192.168.20.0/255.255.255.0 -p tcp --sport 80  -j NOTRACK
-/sbin/iptables -A INPUT   -s 192.168.10.0/255.255.255.0 -p tcp --dport 22  -j ACCEPT
-/sbin/iptables -A INPUT   -s 192.168.56.0/255.255.255.0 -p tcp --dport 22  -j ACCEPT
 /sbin/iptables -A INPUT   -s 192.168.10.0/255.255.255.0 -p icmp -j ACCEPT
 /sbin/iptables -A INPUT   -s 192.168.20.0/255.255.255.0 -p icmp -j ACCEPT
 
