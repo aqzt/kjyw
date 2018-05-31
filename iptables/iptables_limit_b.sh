@@ -1,4 +1,4 @@
-﻿#!/bin/bash
+#!/bin/bash
 ## Iptables 2016-09-28
 ## http://www.aqzt.com
 ## email: ppabc@qq.com

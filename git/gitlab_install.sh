@@ -16,7 +16,7 @@ systemctl start postfix
 cat >>/etc/yum.repos.d/gitlab-ce.repo<<EOF
 [gitlab-ce]
 name=Gitlab CE Repository
-baseurl=https://mirrors.tuna.tsinghua.edu.cn/gitlab-ce/yum/el$releasever/
+baseurl=https://mirrors.tuna.tsinghua.edu.cn/gitlab-ce/yum/el7
 gpgcheck=0
 enabled=1
 EOF
