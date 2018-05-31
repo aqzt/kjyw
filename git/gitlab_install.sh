@@ -36,5 +36,5 @@ gpgkey=https://packages.gitlab.com/gpg.key
 EOF
 
 yum makecache
-yum install gitlab-ci-multi-runner
+yum install -y gitlab-ci-multi-runner
 echo ok
