@@ -26,9 +26,9 @@ yum install -y gitlab-ce
 
 
 cat >>/etc/yum.repos.d/gitlab-ce.repo<<EOF
-[gitlab-ci-multi-runner]
-name=gitlab-ci-multi-runner
-baseurl=https://mirrors.tuna.tsinghua.edu.cn/gitlab-ci-multi-runner/yum/el7
+[gitlab-runner]
+name=gitlab-runner
+baseurl=https://mirrors.tuna.tsinghua.edu.cn/gitlab-runner/yum/el7
 repo_gpgcheck=0
 gpgcheck=0
 enabled=1
@@ -36,5 +36,6 @@ gpgkey=https://packages.gitlab.com/gpg.key
 EOF
 
 yum makecache
-yum install gitlab-ci-multi-runner
+yum install -y  gitlab-runner
+
 echo ok
