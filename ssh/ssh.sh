@@ -5,6 +5,8 @@
 ##robert yu
 ##centos 6
 
+ssh-keygen -t rsa -N "" -f ~/.ssh/id_rsa -q -b 2048 -C "test@ppabc.cn"
+
 #ssh无密码认证 RSA
 ssh-keygen -t rsa
 cat ~/.ssh/id_rsa.pub >> ~/.ssh/authorized_keys
