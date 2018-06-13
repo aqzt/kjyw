@@ -14,7 +14,7 @@ if [ "${isY}" != "y" ] && [ "${isY}" != "Y" ] && [ "${isY}" != "yes" ] && [ "${i
 exit 1
 fi
 echo "安装相关组件"
-yum install -y ntpdate gcc gcc-c++ wget unixODBC unixODBC-devel
+yum install -y ntpdate gcc gcc-c++ wget pcre* unixODBC unixODBC-devel
 echo "同步服务器时间"
 ntpdate asia.pool.ntp.org
 echo "创建zabbix用户"
