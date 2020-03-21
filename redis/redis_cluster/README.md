@@ -5,8 +5,6 @@
 - 安装ruby-2.4.5，redis-4.0.12
 ```
 bash redis.sh install
-或者
-curl -s https://gitee.com/aqztcom/kjyw/raw/master/redis/redis_cluster/redis.sh | sh -s install
 ```
 
 - 初始化配置
