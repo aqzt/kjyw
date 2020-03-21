@@ -6,6 +6,8 @@
 ```
 bash redis.sh install
 ```
+![image](https://raw.githubusercontent.com/aqzt/kjyw/master/images/redis_cluster1.png)
+![image](https://raw.githubusercontent.com/aqzt/kjyw/master/images/redis_cluster2.png)
 
 - 初始化配置
 ```
@@ -14,6 +16,7 @@ bash redis.sh init  30021 30026 192.168.56.101
 或者
 curl -s https://gitee.com/aqztcom/kjyw/raw/master/redis/redis_cluster/redis.sh | sh -s init
 ```
+![image](https://raw.githubusercontent.com/aqzt/kjyw/master/images/redis_cluster3.png)
 
 - 启动redis进程
 ```
@@ -22,26 +25,32 @@ bash redis.sh start 30021 30026 192.168.56.101
 或者
 curl -s https://gitee.com/aqztcom/kjyw/raw/master/redis/redis_cluster/redis.sh | sh -s start
 ```
+![image](https://raw.githubusercontent.com/aqzt/kjyw/master/images/redis_cluster4.png)
 
 - 创建redis cluster集群
 ```
 /opt/redis/bin/redis-trib.rb create --replicas 1 192.168.56.101:30021 192.168.56.101:30022 192.168.56.101:30023 192.168.56.101:30024 192.168.56.101:30025 192.168.56.101:30026
 ```
+![image](https://raw.githubusercontent.com/aqzt/kjyw/master/images/redis_cluster5.png)
+![image](https://raw.githubusercontent.com/aqzt/kjyw/master/images/redis_cluster6.png)
 
 - 检查redis cluster集群状态
 ```
 /opt/redis/bin/redis-cli -c -h 192.168.56.101 -p 30021 -a test20200316 cluster nodes
 ```
+![image](https://raw.githubusercontent.com/aqzt/kjyw/master/images/redis_cluster7.png)
 
 - 停止redis集群
 ```
 bash redis.sh stop 30021 30026 192.168.56.101
 ```
+![image](https://raw.githubusercontent.com/aqzt/kjyw/master/images/redis_cluster8.png)
 
 - 卸载redis集群配置
 ```
 bash redis.sh uninstall
 ```
+![image](https://raw.githubusercontent.com/aqzt/kjyw/master/images/redis_cluster9.png)
 
 
 
