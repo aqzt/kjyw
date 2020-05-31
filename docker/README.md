@@ -7,12 +7,20 @@
 - daemon.json k8s私有可以增加  "insecure-registries":["harbor.io", "k8s.gcr.io", "gcr.io", "quay.io"],
 - 卸载docker命令 yum remove -y  docker-ce docker-common-*
 
-
-# 使用方法
+## 使用方法
 ```
 bash install-docker-18.09.8.sh
 ```
 
 ```
 curl -s https://gitee.com/aqztcom/kjyw/raw/master/docker/install-docker-18.09.8.sh | bash
+```
+
+## 自动安装docker-compose
+```
+bash install-docker-compose.sh
+```
+
+```
+curl -s https://gitee.com/aqztcom/kjyw/raw/master/docker/install-docker-compose.sh | bash
 ```
