@@ -5,6 +5,13 @@
 ##robert yu
 ##centos 6和centos 7
 
+##循环判断两文件，差集内容
+for File in `cat aaa.txt`; do
+f=`cat 222.log  |grep "$File"`
+if [ ! -n "$f" ]; then  echo "$File" ; fi
+##if [ "$f" == "" ]; then  echo "$File" ; fi
+done
+
 ##linux  shell 按行循环读入文件
 printf "*************************************\n"  
 echo " cat file whiel read line"  

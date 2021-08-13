@@ -36,7 +36,7 @@ sleep 1
 # 安装必要支持工具及软件工具
 yum_update(){
 yum update -y
-yum install -y nmap unzip wget vim lsof xz net-tools iptables-services ntpdate ntp-doc
+yum install -y nmap unzip wget vim lsof xz net-tools iptables-services ntpdate ntp-doc psmisc
 }
 
 # 设置时间同步 set time
@@ -178,14 +178,14 @@ cat > /opt/sh/ipt.sh << EOF
 /sbin/iptables -A OUTPUT -j ACCEPT
 /sbin/iptables -A INPUT -s 192.168.10.152 -j ACCEPT
 /sbin/iptables -A INPUT -s 192.168.20.102 -j ACCEPT
-/sbin/iptables -A INPUT -s 192.168.10.0/255.255.255.0 -p tcp --dport 80  -j ACCEPT
-/sbin/iptables -A INPUT -s 192.168.20.0/255.255.255.0 -p tcp --dport 80   -j ACCEPT
+/sbin/iptables -A INPUT -p tcp --dport 80  -j ACCEPT
+/sbin/iptables -A INPUT -p tcp --dport 22  -j ACCEPT
+/sbin/iptables -A INPUT -s 192.168.10.0/255.255.255.0 -p tcp --dport 8080  -j ACCEPT
+/sbin/iptables -A INPUT -s 192.168.20.0/255.255.255.0 -p tcp --dport 8080  -j ACCEPT
 /sbin/iptables -t raw -A PREROUTING -s 192.168.10.0/255.255.255.0 -p tcp --dport 80  -j NOTRACK
 /sbin/iptables -t raw -A PREROUTING -s 192.168.20.0/255.255.255.0 -p tcp --dport 80  -j NOTRACK
 /sbin/iptables -t raw -A OUTPUT -s 192.168.10.0/255.255.255.0 -p tcp --sport 80  -j NOTRACK
 /sbin/iptables -t raw -A OUTPUT -s 192.168.20.0/255.255.255.0 -p tcp --sport 80  -j NOTRACK
-/sbin/iptables -A INPUT   -s 192.168.10.0/255.255.255.0 -p tcp --dport 22  -j ACCEPT
-/sbin/iptables -A INPUT   -s 192.168.20.0/255.255.255.0 -p tcp --dport 22  -j ACCEPT
 /sbin/iptables -A INPUT   -s 192.168.10.0/255.255.255.0 -p icmp -j ACCEPT
 /sbin/iptables -A INPUT   -s 192.168.20.0/255.255.255.0 -p icmp -j ACCEPT
 

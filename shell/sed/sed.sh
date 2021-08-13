@@ -5,6 +5,15 @@
 ##robert yu
 ##centos 6和centos 7
 
+##查文件从32994到34871行内容
+sed -n '32994,34871p'  config_file
+
+##删除文件从32994到34871行内容
+sed '32994,34871 d' config_file
+
+##替换文件中performance_schema改为performance_schema_bak
+sed -i "s/performance_schema/performance_schema_bak/g" config_file
+
 ##sed去除注释行
 sed -i -c -e '/^#/d' config_file
 

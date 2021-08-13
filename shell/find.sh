@@ -103,6 +103,8 @@ find /data -name "*.php" -type f -print0|xargs -0 egrep "(phpspy|c99sh|milw0rm|e
 find /data -name "*.php" -type f -print0|xargs -0 egrep "aaa"|awk -F: '{print $1}'|sort|uniq
 find . -name "*.php" -type f -print0| xargs -0 egrep  "aaa|bbb"| egrep "aaa"
 
+find . -name "*.php" | xargs grep "aaa"
+
 ##cd  /var/cache/yum找*.rpm移动到一个文件夹
 find  . -name  "*.rpm" -exec cp {} /root/111 \;
 

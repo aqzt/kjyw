@@ -8,7 +8,12 @@
 - Linux下很多操作命令，都可以根据业务需求通用化，脚本化，关键是思路，很多LAMP/LNMP一键安装包，也是这样。
 - 脚本化后，可以结合一些自动化工具，批量部署，比如可以用ansible来批量执行脚本，就可以批量部署服务器业务。
 - 这里面的脚本是运维经常使用的脚本，方便大家使用！
+
+## 快捷运维官方地址
+- 开源中国●码云地址：https://gitee.com/aqztcom/kjyw.git
+- Github地址：https://github.com/aqzt/kjyw.git
 - 相关使用文档：https://bbs.aqzt.com/forum-39-1.html
+- 有问题反馈：https://aq2.cn/c/kjyw
 
 ## 为什么要做快捷运维？
 - 相信大家都知道，运维是一项非常重要且时效性要求很高的工作，项目和程序发布，升级，更新都少不了运维的操作，
@@ -31,17 +36,17 @@
 - 有没有更好的方法，可以提高效率，快速完成呢？
 - 如果用脚本部署，只需要1分钟搞定，主要是编译redis时间，大大提高效率，快捷，快捷，快捷啊！
 - 第一步 编译redis
-- curl -s https://git.oschina.net/aqztcom/kjyw/raw/master/redis/install.sh | sh
+- curl -s https://gitee.com/aqztcom/kjyw/raw/master/redis/install.sh | sh
 - 第二步 拷贝redis执行文件，修改配置文件，并启动
-- curl -s https://git.oschina.net/aqztcom/kjyw/raw/master/redis/redis_port.sh | sh -s  install 8001 8009
+- curl -s https://gitee.com/aqztcom/kjyw/raw/master/redis/redis_port.sh | sh -s  install 8001 8009
 - 完成！
-- ![image](https://git.oschina.net/aqztcom/kjyw/raw/master/images/redis1.gif)
+- ![image](https://gitee.com/aqztcom/kjyw/raw/master/images/redis1.gif)
 - 批量关闭redis端口 8001到8009
-- curl -s https://git.oschina.net/aqztcom/kjyw/raw/master/redis/redis_port.sh  | sh -s  stop 8001 8009
-- ![image](https://git.oschina.net/aqztcom/kjyw/raw/master/images/redis2.gif)
+- curl -s https://gitee.com/aqztcom/kjyw/raw/master/redis/redis_port.sh  | sh -s  stop 8001 8009
+- ![image](https://gitee.com/aqztcom/kjyw/raw/master/images/redis2.gif)
 - 批量启动redis端口 8001到8009
-- curl -s https://git.oschina.net/aqztcom/kjyw/raw/master/redis/redis_port.sh  | sh -s  start 8001 8009 
-- ![image](https://git.oschina.net/aqztcom/kjyw/raw/master/images/redis3.gif)
+- curl -s https://gitee.com/aqztcom/kjyw/raw/master/redis/redis_port.sh  | sh -s  start 8001 8009 
+- ![image](https://gitee.com/aqztcom/kjyw/raw/master/images/redis3.gif)
 - 快捷运维还有其他运维经常使用的脚本，方便使用，提高效率！
 
 
@@ -59,7 +64,7 @@
 
 ## 微信关注
 
-![image](https://git.oschina.net/aqztcom/kjyw/raw/master/images/aqzt.jpg)
+![image](https://gitee.com/aqztcom/kjyw/raw/master/images/aqzt.jpg)
 
 - 运维就是踩坑，踩坑的最高境界就是：踩遍所有的坑，让别人无坑可踩！
 - 做事的宗旨是：一条命令的事，一个脚本的事！
