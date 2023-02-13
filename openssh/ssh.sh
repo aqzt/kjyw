@@ -7,6 +7,12 @@
 
 ssh-keygen -t rsa -N "" -f ~/.ssh/id_rsa -q -b 2048 -C "test@ppabc.cn"
 
+#ssh无密码认证 ed25519
+ssh-keygen -t ed25519
+cat ~/.ssh/id_ed25519.pub >> ~/.ssh/authorized_keys
+chmod 600 ~/.ssh/authorized_keys
+
+
 #ssh无密码认证 RSA
 ssh-keygen -t rsa
 cat ~/.ssh/id_rsa.pub >> ~/.ssh/authorized_keys
