@@ -12,8 +12,8 @@
 ## 快捷运维官方地址
 - 开源中国●码云地址：https://gitee.com/aqztcom/kjyw.git
 - Github地址：https://github.com/aqzt/kjyw.git
-- 相关使用文档：https://bbs.aqzt.com/forum-39-1.html
-- 有问题反馈：https://aq2.cn/c/kjyw
+- 相关使用文档：https://aqzt.com/circle
+- 有问题反馈：https://aqzt.com/circle
 
 ## 为什么要做快捷运维？
 - 相信大家都知道，运维是一项非常重要且时效性要求很高的工作，项目和程序发布，升级，更新都少不了运维的操作，
