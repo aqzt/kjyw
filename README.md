@@ -12,7 +12,7 @@
 ## 快捷运维官方地址
 - 开源中国●码云地址：https://gitee.com/aqztcom/kjyw.git
 - Github地址：https://github.com/aqzt/kjyw.git
-- 相关使用文档：https://aqzt.com/circle
+- 相关使用文档：[https://opendeep.wiki/aqzt/kjyw](https://opendeep.wiki/aqzt/kjyw)
 - 有问题反馈：https://aqzt.com/circle
 
 ## 为什么要做快捷运维？
